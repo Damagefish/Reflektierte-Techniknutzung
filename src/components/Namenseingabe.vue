@@ -14,6 +14,12 @@
 </body>
 </template>
 
+<script>
+export default {
+        name: 'NamensEingabe',
+    }
+</script>
+
 <style scoped>
 
 .h4{
