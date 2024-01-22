@@ -4,7 +4,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NamensEingabeView from '../views/NamensEingabeView.vue'
 import LebensBereicheView from '../views/LebensBereicheView.vue';
 
-import AspirationWählenView from '../views/AspirationWählenView.vue';
+import AspirationswahlView from '../views/AspirationswahlView.vue';
 import BarChart from '../views/BarChart.vue'; 
 import MainScreen from '../views/MainScreen.vue'; 
 import MeilenSteineWählenView from '../views/MeilenSteineWählenView.vue'; 
@@ -12,6 +12,8 @@ import WochenAblaufView from '../views/WochenAblaufView.vue';
 import CheckIn1View from '../views/CheckIn1View.vue';
 import CheckIn2View from '../views/CheckIn2View.vue';
 
+import BackgroundView from '@/views/BackgroundView.vue'; // Stellen Sie sicher, dass der Pfad korrekt ist
+import KalenderView from '@/views/KalenderView.vue'; // Passe den Pfad entsprechend an
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -24,9 +26,9 @@ const routes: Array<RouteRecordRaw> = [
     component: LebensBereicheView
   },
   {
-    path: '/AspirationWählenView',
-    name: 'AspirationWählenView',
-    component: AspirationWählenView
+    path: '/AspirationswahlView',
+    name: 'AspirationswahlView',
+    component: AspirationswahlView
   },
   {
     path: '/barchart', 
@@ -56,12 +58,26 @@ const routes: Array<RouteRecordRaw> = [
     name: 'CheckIn2View',
     component: CheckIn2View
   },
+
+  {
+    path: '/BackgroundView',
+    name: 'BackgroundView',
+    component: BackgroundView,
+  },
   
+  {
+    path: '/KalenderView',
+    name: 'KalenderView',
+    component: KalenderView,
+  },
+
   {
     path: '/meilensteine-waehlen',
     name: 'meilensteine-waehlen',
     component: MeilenSteineWählenView
-  }
+  }*/
+
+
 ];
 
 const router = createRouter({

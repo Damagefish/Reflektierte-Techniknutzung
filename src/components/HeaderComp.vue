@@ -2,48 +2,55 @@
   <div class="header">
     <div
       class="circle"
-      ref="circle"
-      @mouseover="highlightCircle"
-      @mouseout="resetHighlight"
+      ref="circle1"
+      @mouseover="highlightCircle('circle1')"
+      @mouseout="resetHighlight('circle1')"
+      @click="navigateTo('/')"
     >
-      1
+    <!-- @click="navigateTo('/')" -->
+    <!--  <router-link to="/" @click="navigateTo('/')">1</router-link> -->  
     </div>
     <div class="connector"></div>
     <div
       class="circle"
-      ref="circle"
-      @mouseover="highlightCircle"
-      @mouseout="resetHighlight"
+      ref="circle2"
+      @mouseover="highlightCircle('circle2')"
+      @mouseout="resetHighlight('circle2')"
+      @click="navigateTo('/LebensBereicheView')"
     >
-      2
+    
     </div>
-    <div class="connector"></div>
-    <div
-      class="circle"
-      ref="circle"
-      @mouseover="highlightCircle"
-      @mouseout="resetHighlight"
-    >
-      3
-    </div>
-    <div class="connector"></div>
 
+    <div class="connector"></div>
+    <div
+  class="circle"
+  ref="circle3"
+  @mouseover="highlightCircle('circle3')"
+  @mouseout="resetHighlight('circle3')"
+  @click="navigateTo('/AspirationswahlView')"
+>
+  
+</div>
+    <div class="connector"></div>
     <div
       class="circle"
-      ref="circle"
-      @mouseover="highlightCircle"
-      @mouseout="resetHighlight"
+      ref="circle4"
+      @mouseover="highlightCircle('circle4')"
+      @mouseout="resetHighlight('circle4')"
+      @click="navigateTo('meilensteine-waehlen')"
     >
-      4
+    
+    
     </div>
     <div class="connector"></div>
     <div
       class="circle"
-      ref="circle"
-      @mouseover="highlightCircle"
-      @mouseout="resetHighlight"
+      ref="circle5"
+      @mouseover="highlightCircle('circle5')"
+      @mouseout="resetHighlight('circle5')"
+      @click="navigateTo('/WochenAblaufView')"
     >
-      5
+  
     </div>
   </div>
 </template>
@@ -51,16 +58,21 @@
 <script>
 export default {
   methods: {
-    highlightCircle() {
-      if (this.$refs.circle) {
-        this.$refs.circle.style.boxShadow =
-          '8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff';
+    navigateTo(route) {
+  this.$router.push({ path: route });
+},
+
+    highlightCircle(circleRef) {
+      const circle = this.$refs[circleRef];
+      if (circle) {
+        circle.style.boxShadow = 'inset 8px 8px 15px #bcbcbc, inset -8px -8px 15px #ffffff';
       }
     },
-    resetHighlight() {
-      if (this.$refs.circle) {
-        this.$refs.circle.style.boxShadow =
-          '5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff';
+
+    resetHighlight(circleRef) {
+      const circle = this.$refs[circleRef];
+      if (circle) {
+        circle.style.boxShadow = '5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff';
       }
     },
   },
@@ -87,10 +99,24 @@ export default {
   font-family: Arial, sans-serif;
   box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
   transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .circle:hover {
   box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
+}
+
+.circle:active {
+  transform: scale(0.9);
+}
+
+.inner-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #4d4d4d;
+  background-color: #e0e0e0;
+  position: absolute;
 }
 
 .connector {
