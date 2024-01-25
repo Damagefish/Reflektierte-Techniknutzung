@@ -1,18 +1,29 @@
 <template>
-    <div class="footer-section">
-      <slot></slot>
-    </div>
-  </template>
-  
-  <script>
-  export default {
+  <div class="footer">
+    <div class="footer-section"> <font-awesome-icon :icon="['fas', 'chart-column']" /></div>
+    <div class="footer-section"> <font-awesome-icon :icon="['fas', 'house']" /></div>
+    <div class="footer-section"> <font-awesome-icon :icon="['fas', 'clock']" /></div>
+  </div>
+</template>
 
-  };
-  </script>
-  
-  <style scoped>
-  .footer-section {
-    flex: 1;
-    text-align: center;
-  }
-  </style>
+<script>
+export default {
+  name: 'FooterComp',
+};
+</script>
+
+<style scoped>
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.footer-section {
+  flex: 1;
+  text-align: center;
+}
+</style>
