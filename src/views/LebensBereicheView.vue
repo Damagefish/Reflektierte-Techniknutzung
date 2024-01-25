@@ -9,21 +9,17 @@
             <div style="page-break-after: always;"></div>
             <i>Was möchtest du erreichen?</i>
         </h4>
-        <TagComponent/>
-        <NewTag ref="TagComponent"/>
-        <font-awesome-icon :icon="['fas', 'circle-arrow-right']" />
+        <LebensbereicheComp/>
+        <font-awesome-icon :icon="['fas', 'circle-arrow-right']"/>
         </div>
 </template>
 
 <script>
 
-import NewTag from '@/components/NewTag.vue'
-import TagComponent from '@/components/TagComponent.vue'
-import Vue from 'vue';
+import LebensbereicheComp from '@/components/LebensbereicheComp.vue'
 export default {
     components:{
-        NewTag,
-        TagComponent
+        LebensbereicheComp
     },
     methods:{
         addTag(){
