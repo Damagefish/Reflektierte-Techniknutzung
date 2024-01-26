@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
 // Import Fontawesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,6 +17,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
 
 
+
 library.add(faArrowRight)
 library.add(faCircleArrowRight)
 library.add(faCircleArrowLeft)
@@ -24,5 +26,4 @@ library.add(faClock)
 library.add(faChartColumn)
 library.add(faCirclePlus)
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')
-
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).use(store).mount('#app')

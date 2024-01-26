@@ -17,13 +17,9 @@
             <input type="text" v-model.trim="tag" @keypress.prevent.stop.enter="addTag">
             <font-awesome-icon :icon="['fas', 'circle-plus']" @click.prevent.stop="addTag"/>
           </div>
-      <textfield>
-      {{ selectedTags[3] }}
-    </textfield>
     </div>
     <div class="frame3"> 
-
-
+    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags"/>
 </div>
   </div>
 </template>
@@ -51,6 +47,9 @@ export default {
         this.tag = '';
         }
     }, 
+    setSelectedTags(){
+      this.$store.commit('setSelectedTags', this.selectedTags);
+    }
   },
 };
 </script>

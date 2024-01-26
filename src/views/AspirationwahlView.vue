@@ -10,9 +10,9 @@
         <select>
             <option>Ich möchte</option>
             <option>Ich sollte</option>
-            <option>Ich beherrsche</option>
+            <option>Ich will</option>
         </select>
-        <input/>
+        <input v-model="aspiration"/>
     </div>
     <div id="IstZustand">
         <select>
@@ -20,9 +20,9 @@
             <option>Ich kann</option>
             <option>Ich beherrsche</option>
         </select>
-        <input/>
+        <input v-model="istZustand"/>
         <div>
-        <font-awesome-icon :icon="['fas', 'circle-arrow-right']" />
+        <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click="{setAspiration(); setIstZustand();}" />
         </div>
     </div>
     
@@ -32,8 +32,24 @@
     import LebensbereicheComp from '@/components/LebensbereicheComp.vue'
     export default{
     
+        data(){
+            return{
+                tags: [], 
+                aspiration: '', 
+                istZustand: '',
+            }
+    
+        },
         components:{
             LebensbereicheComp
+        }, 
+        methods:{
+            setAspiration(){
+                this.$store.commit('setAspiration', this.aspiration);
+            },
+            setIstZustand(){
+                this.$store.commit('setIstZustand', this.istZustand);
+            },
         }
     }
     </script>
