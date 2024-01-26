@@ -15,3 +15,6 @@ Damit die Fontawesome Icons dargestellt werden können, müssen folgende Befehle
 
 #### Installation von Vuex (ermöglicht den Store von Variablen)
 + ``npm install vuex@next --save``
+
+#### Installation von Roboto Font 
++ ``npm install @fontsource/roboto``
