@@ -19,7 +19,7 @@
           </div>
     </div>
     <div class="frame3"> 
-    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags"/>
+    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags(); $router.push('/AspirationswahlView')"/>
 </div>
   </div>
 </template>
