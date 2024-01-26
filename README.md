@@ -12,3 +12,6 @@ Damit die Fontawesome Icons dargestellt werden können, müssen folgende Befehle
 
 #### Installation von chart.js (für die Darstellung der Tabellen): 
 + ``npm install chart.js`` 
+
+#### Installation von Vuex (ermöglicht den Store von Variablen)
++ ``npm install vuex@next --save``
