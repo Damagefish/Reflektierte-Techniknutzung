@@ -16,7 +16,7 @@
       ref="circle2"
       @mouseover="highlightCircle('circle2')"
       @mouseout="resetHighlight('circle2')"
-      @click="navigateTo('/LebensBereicheView')"
+      @click="navigateTo('LebensBereicheView')"
     >
     
     </div>
@@ -27,7 +27,7 @@
   ref="circle3"
   @mouseover="highlightCircle('circle3')"
   @mouseout="resetHighlight('circle3')"
-  @click="navigateTo('/AspirationswahlView')"
+  @click="navigateTo('/AspirationwahlView')"
 >
   
 </div>

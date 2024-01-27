@@ -4,20 +4,12 @@
     <HeaderComp />
     <section class="abstand"> </section>
     <nav>
-      
-      <router-link to="/">NamensEingabeView</router-link> |
-
-      <router-link to="/LebensBereicheView">LebensBereicheView</router-link> |
-
-      <router-link to="/AspirationWählenView">AspirationWählenView</router-link> |
-
-      <router-link to="/meilensteine-waehlen">Meilensteine Wählen</router-link> |
-
-      <router-link to="/WochenAblaufView">Wochenablauf</router-link> |
-
+    
       <router-link to="/mainscreen">Main Screen</router-link> | 
       <router-link to="/barchart">Bar Chart</router-link> | 
       <router-link to="/CheckIn1View">Check In 1</router-link> |
+      <router-link to="/KalenderView">Kalender View</router-link> |
+      <router-link to="/BackgroundView">Background</router-link> |
       <router-link to="/CheckIn2View">Check In 2</router-link> 
       
     </nav>
@@ -47,7 +39,7 @@ export default {
 
 <style>
 #app {
-  font-family: "Roboto";
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

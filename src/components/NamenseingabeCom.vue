@@ -1,7 +1,6 @@
 <template>
   <div class="lebensbereiche-comp">
-    <div class="frame2">
-      
+    <div class="frame">
       <div class="tags-container">
         <div
           class="tag"
@@ -13,14 +12,12 @@
           {{ tag }}
         </div>
       </div>
-          <div class="input-wrapper">
-            <input type="text" v-model.trim="tag" @keypress.prevent.stop.enter="addTag">
-            <font-awesome-icon :icon="['fas', 'circle-plus']" @click.prevent.stop="addTag"/>
-          </div>
+      <div class="bottom-border"></div>
     </div>
-    <div class="frame3"> 
-    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags(); $router.push('/AspirationwahlView')"/>
-</div>
+    <div class="add-more-container">
+      <p>Möchtest du weitere Lebensbereiche hinzufügen?</p>
+      <button @click="addMoreTags">Hinzufügen</button>
+    </div>
   </div>
 </template>
 
@@ -28,9 +25,8 @@
 export default {
   data() {
     return {
-      tags: ['Gesundheit', 'Tag2', 'Tag3', 'Tag4', 'Tag5', 'Tag6'],
+      tags: ['Tag1', 'Tag2', 'Tag3', 'Tag4', 'Tag5', 'Tag6'],
       selectedTags: [],
-      tag: ''
     };
   },
   methods: {
@@ -41,15 +37,11 @@ export default {
         this.selectedTags.push(tag);
       }
     },
-    addTag() {
-       if (this.tag && ! this.tags.includes(this.tag)) {
-        this.tags.push(this.tag);
-        this.tag = '';
-        }
-    }, 
-    setSelectedTags(){
-      this.$store.commit('setSelectedTags', this.selectedTags);
-    }
+    addMoreTags() {
+      // Beispiel: Füge drei neue Tags hinzu
+      const newTags = ['TagX'];
+      this.tags = [...this.tags, ...newTags];
+    },
   },
 };
 </script>
@@ -61,24 +53,17 @@ export default {
 }
 
 .frame {
+  position: relative;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 15px;
-  margin-bottom: 5px;
 }
 
-.frame2 {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  margin-bottom: 5px;
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.frame3{
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-}
 .tag {
   display: inline-block;
   padding: 8px 12px;
@@ -99,5 +84,38 @@ export default {
   background-color: #4caf50;
   color: #fff;
   box-shadow: inset 5px 5px 10px #357a38, inset -5px -5px 10px #61bd61;
+}
+
+.bottom-border {
+  position: absolute;
+  bottom: -1px;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.add-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-more-container p {
+  margin-bottom: 20px;
+}
+
+.add-more-container button {
+  background-color: #e0e0e0;
+  border: 1px solid #d3d3d3;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 8px;
+}
+
+.add-more-container button:hover {
+  box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
 }
 </style>

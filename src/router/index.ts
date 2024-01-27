@@ -4,7 +4,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NamensEingabeView from '../views/NamensEingabeView.vue'
 import LebensBereicheView from '../views/LebensBereicheView.vue';
 
-import AspirationswahlView from '../views/AspirationswahlView.vue';
+import AspirationwahlView from '../views/AspirationwahlView.vue';
 import BarChart from '../views/BarChart.vue'; 
 import MainScreen from '../views/MainScreen.vue'; 
 import MeilenSteineWählenView from '../views/MeilenSteineWählenView.vue'; 
@@ -14,21 +14,23 @@ import CheckIn2View from '../views/CheckIn2View.vue';
 
 import BackgroundView from '@/views/BackgroundView.vue'; // Stellen Sie sicher, dass der Pfad korrekt ist
 import KalenderView from '@/views/KalenderView.vue'; // Passe den Pfad entsprechend an
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'NamensEingabeView',
     component: NamensEingabeView
   },
+  
   {
     path: '/LebensBereicheView',
     name: 'LebensBereicheView',
     component: LebensBereicheView
   },
   {
-    path: '/AspirationswahlView',
-    name: 'AspirationswahlView',
-    component: AspirationswahlView
+    path: '/AspirationwahlView',
+    name: 'AspirationwahlView',
+    component: AspirationwahlView
   },
   {
     path: '/barchart', 
@@ -75,7 +77,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/meilensteine-waehlen',
     name: 'meilensteine-waehlen',
     component: MeilenSteineWählenView
-  }*/
+  }
 
 
 ];

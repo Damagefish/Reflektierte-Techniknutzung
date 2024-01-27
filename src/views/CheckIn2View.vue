@@ -1,21 +1,11 @@
 <template>
-  <div>
-    <h1>Check In 2</h1>
-  </div>
+a
 </template>
 
 <script>
 
-
-export default {
-  components: {
-    
-  }
-};
 </script>
 
 <style scoped>
-  h1 {
-    text-align: center;
-  }
+/* Spezifische CSS für diese Komponente */
 </style>
