@@ -1,7 +1,6 @@
 <!-- App.vue -->
 <template>
   <div>
-    <HeaderComp />
     <section class="abstand"> </section>
     <nav>
     
@@ -25,21 +24,19 @@
 <script>
 import Footer from './components/FooterComp.vue';
 import FooterSection from './components/FooterSection.vue';
-import HeaderComp from './components/HeaderComp.vue';
 
 export default {
   name: 'App',
   components: {
     Footer,
     FooterSection,
-    HeaderComp,
   },
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

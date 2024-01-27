@@ -1,4 +1,5 @@
 <template>
+    <HeaderComp/>
     <div>
         <h4>Moin {{ $store.getters.getName }}!
             Wähle zuerst die Lebensbereiche aus, die dir besonders wichtig sind. 
@@ -17,9 +18,11 @@
 <script>
 
 import LebensbereicheComp from '@/components/LebensbereicheComp.vue'
+import HeaderComp from '@/components/HeaderComp.vue'
 export default {
     components:{
-        LebensbereicheComp
+        LebensbereicheComp,
+        HeaderComp
     },
     methods:{
     }
