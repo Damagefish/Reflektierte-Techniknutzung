@@ -8,6 +8,7 @@ export default new Vuex.Store({
         selectedTags: [],
         aspiration: "",
         istZustand: "",
+        weekGoalsOne: [],
     },
     getters:{
         getName(state){
@@ -25,7 +26,11 @@ export default new Vuex.Store({
         getIstZustand(state){
             const istZustand = state.istZustand;
             return istZustand;
-        }
+        },
+        getWeekGoalsOne(state){
+            const weekGoalsOne = state.weekGoalsOne;
+            return weekGoalsOne;
+        },
     },
     mutations:{
         changeName(state, newName){
@@ -39,6 +44,9 @@ export default new Vuex.Store({
         },
         setIstZustand(state, newIstZustand){
             state.istZustand = newIstZustand;
+        }, 
+        setWeekGoalsOne(state, newWeekGoalsOne){
+            state.weekGoalsOne = newWeekGoalsOne;
         }
     }
 
