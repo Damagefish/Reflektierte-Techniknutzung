@@ -9,13 +9,13 @@
             <i class="fas fa-angle-right next"></i>
           </div>
           <div class="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
+            <div>Mo</div>
+            <div>Di</div>
+            <div>Mi</div>
+            <div>Do</div>
+            <div>Fr</div>
+            <div>Sa</div>
+            <div>So</div>
           </div>
           <div class="days"></div>
           <div class="goto-today">
@@ -590,9 +590,6 @@ getActiveDay(date) {
     text-align: center;
   }
 
-  .weekdays div:nth-child(1) {
-    order: 7; /* Verschiebt Sonntag ans Ende */
-  }
   .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
