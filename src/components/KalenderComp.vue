@@ -32,7 +32,9 @@
         <div class="today-date">
           <div class="event-day"></div>
           <div class="event-date"></div>
-          <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "$router.push('/MainScreen')"/>
+          <div v-if = "siteNotEntered">
+          <font-awesome-icon :icon="['fas', 'circle-check']" @click = "$router.push('/MainScreen'); toggleFirstTimeEnter();"/>
+          </div>
         </div>
         <div class="events"></div>
         <button class="add-event">
@@ -115,6 +117,7 @@ export default {
       aspirationOptions: ["Option 1", "Option 2", "Option 3"], 
       zielInput: '',
       meilensteinInput: '',
+      siteNotEntered: this.$store.getters.getFirstTimeCalendar,
 
       today: new Date(),
       activeDay: null,
@@ -489,6 +492,9 @@ getActiveDay(date) {
      
       this.$store.commit('setAspiration', aspiration);
       this.showDropdown = false; 
+    }, 
+    toggleFirstTimeEnter(){
+      this.$store.commit('toggleFirstEnterCalendar');
     }
     
   },

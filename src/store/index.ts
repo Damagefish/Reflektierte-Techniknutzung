@@ -11,6 +11,7 @@ export default new Vuex.Store({
         istZustand: "", //Ist Zustand: Der aktuelle Stand des Nutzers
         zielInput: "",
         meilensteinInput: "",
+        calendarFirstEnter: true,
     },
     getters:{
         getName(state){
@@ -36,6 +37,10 @@ export default new Vuex.Store({
         getIstZustand(state){
             const istZustand = state.istZustand;
             return istZustand;
+        },
+        getFirstTimeCalendar(state){
+            const firstEnter = state.calendarFirstEnter;
+            return firstEnter
         }
     },
     mutations:{
@@ -61,6 +66,9 @@ export default new Vuex.Store({
         setZielInput(state, newZielInput) {
             state.zielInput = newZielInput;
         },
+        toggleFirstEnterCalendar(state){
+            state.calendarFirstEnter = !state.calendarFirstEnter;
+        }
     }
 
 
