@@ -28,7 +28,7 @@
 export default {
   data() {
     return {
-      tags: ['Gesundheit', 'Tag2', 'Tag3', 'Tag4', 'Tag5', 'Tag6'],
+      tags: ['eigene Gesundheit', 'Gesundheit anderer', 'Familie', 'Einkommen', 'Soziales', 'Beruf' ],
       selectedTags: [],
       tag: ''
     };
