@@ -3,13 +3,10 @@
   <div>
     <section class="abstand"> </section>
     <nav>
-    
-      <router-link to="/mainscreen">Main Screen</router-link> | 
+      <router-link to="/test1View">test1View</router-link> | 
       <router-link to="/barchart">Bar Chart</router-link> | 
-      <router-link to="/CheckIn1View">Check In 1</router-link> |
-      <router-link to="/KalenderView">Kalender View</router-link> |
-      <router-link to="/BackgroundView">Background</router-link> |
-      <router-link to="/CheckIn2View">Check In 2</router-link> 
+      <router-link to="/BackgroundView">Background</router-link> 
+     
       
     </nav>
     <router-view />
@@ -25,18 +22,20 @@
 import Footer from './components/FooterComp.vue';
 import FooterSection from './components/FooterSection.vue';
 
+
 export default {
   name: 'App',
   components: {
     Footer,
     FooterSection,
+   
   },
 };
 </script>
 
 <style>
 #app {
-  font-family: "Roboto";
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

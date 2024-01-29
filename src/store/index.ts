@@ -8,7 +8,8 @@ export default new Vuex.Store({
         selectedTags: [],
         aspiration: "",
         istZustand: "",
-        weekGoalsOne: [],
+        zielInput: "",
+        meilensteinInput: "",
     },
     getters:{
         getName(state){
@@ -23,14 +24,18 @@ export default new Vuex.Store({
             const aspiration = state.aspiration;
             return aspiration
         },
+        getZielInput(state){
+            const zielInput = state.zielInput;
+            return zielInput
+        },
+        getMeilensteinInput(state){
+            const meilensteinInput = state.meilensteinInput;
+            return meilensteinInput
+        },
         getIstZustand(state){
             const istZustand = state.istZustand;
             return istZustand;
-        },
-        getWeekGoalsOne(state){
-            const weekGoalsOne = state.weekGoalsOne;
-            return weekGoalsOne;
-        },
+        }
     },
     mutations:{
         changeName(state, newName){
@@ -44,10 +49,14 @@ export default new Vuex.Store({
         },
         setIstZustand(state, newIstZustand){
             state.istZustand = newIstZustand;
-        }, 
-        setWeekGoalsOne(state, newWeekGoalsOne){
-            state.weekGoalsOne = newWeekGoalsOne;
-        }
+        },
+
+        setMeilensteinInput(state, newMeilensteinInput) {
+            state.meilensteinInput = newMeilensteinInput;
+        },
+        setZielInput(state, newZielInput) {
+            state.zielInput = newZielInput;
+        },
     }
 
 
