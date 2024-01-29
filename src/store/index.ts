@@ -12,6 +12,7 @@ export default new Vuex.Store({
         zielInput: "",
         meilensteinInput: "",
         calendarFirstEnter: true,
+        eventsArr:[],
     },
     getters:{
         getName(state){
@@ -34,6 +35,9 @@ export default new Vuex.Store({
             const meilensteinInput = state.meilensteinInput;
             return meilensteinInput
         },
+        getEventsArr(state) {
+            return state.eventsArr;
+          },
         getIstZustand(state){
             const istZustand = state.istZustand;
             return istZustand;
@@ -66,6 +70,9 @@ export default new Vuex.Store({
         setZielInput(state, newZielInput) {
             state.zielInput = newZielInput;
         },
+        setEventsArr(state, eventsArr) {
+            state.eventsArr = eventsArr;
+          },
         toggleFirstEnterCalendar(state){
             state.calendarFirstEnter = !state.calendarFirstEnter;
         }

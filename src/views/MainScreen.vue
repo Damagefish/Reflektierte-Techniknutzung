@@ -5,22 +5,25 @@
         <p>{{ getAspirationFromStore }}</p>
       </div>
 
-      <!-- Container für alle Informationen -->
       <div v-if="showAdditionalInfo" class="additional-info-container">
-        <div v-if="getIstZustandFromStore" class="store-data">
+        <div v-if="showIstZustand" class="store-data">
           <h1>IST ZUSTAND</h1>
           <p>{{ getIstZustandFromStore }}</p>
         </div>
-        <div v-if="getMeilensteinInputFromStore" class="store-data">
-          <h1>MEILENSTEIN</h1>
-          <p>{{ getMeilensteinInputFromStore }}</p>
-        </div>
-        <div v-if="getZielInputFromStore" class="store-data">
-          <h1>ZIELE</h1>
-          <p>{{ getZielInputFromStore }}</p>
+        <div v-else class="events-container">
+          <h1>EVENTS</h1>
+          <div v-for="(event, index) in getEventsArrFromStore" :key="index" class="store-data">
+            <h2>Day {{ event.day }}</h2>
+            <div v-for="(eventDetail, detailIndex) in event.events" :key="detailIndex">
+              <p>{{ eventDetail.title }}</p>
+              <p>{{ eventDetail.time }}</p>
+              <p>{{ eventDetail.anotherInput }}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "$router.push('/KalenderView')"/>
+
+      <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click="$router.push('/KalenderView')"/>
     </div>
   </div>
 </template>
@@ -40,14 +43,19 @@ export default {
     getZielInputFromStore() {
       return this.$store.getters.getZielInput;
     },
+    getEventsArrFromStore() {
+      return this.$store.getters.getEventsArr;
+    },
   },
   data() {
     return {
       showAdditionalInfo: false,
+      showIstZustand: false,
     };
   },
   methods: {
     handleAspirationClick() {
+      this.showIstZustand = !this.showIstZustand;
       this.showAdditionalInfo = true;
     },
   },
@@ -76,5 +84,15 @@ export default {
 .additional-info-container .store-data {
   flex: 1;
   margin-right: 20px;
+}
+
+.events-container {
+  margin-top: 20px;
+}
+
+.events-container h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>

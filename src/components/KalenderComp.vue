@@ -9,13 +9,13 @@
             <i class="fas fa-angle-right next"></i>
           </div>
           <div class="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
+            <div>Mo</div>
+            <div>Di</div>
+            <div>Mi</div>
+            <div>Do</div>
+            <div>Fr</div>
+            <div>Sa</div>
+            <div>So</div>
           </div>
           <div class="days"></div>
           <div class="goto-today">
@@ -91,6 +91,9 @@ export default {
      getIstZustandFromStore() {
        return this.$store.getters.getIstZustand;
      },
+     getEventsArr() {
+      return this.$store.getters.getEventsArr;
+    },
    },
   data() {
     return {
@@ -133,12 +136,12 @@ export default {
   methods: {
     initCalendar() {
       const firstDay = new Date(this.year, this.month, 1);
-      const lastDay = new Date(this.year, this.month + 1, 0);
-      const prevLastDay = new Date(this.year, this.month, 0);
-      const prevDays = prevLastDay.getDate();
-      const lastDate = lastDay.getDate();
-      const day = firstDay.getDay();
-      const nextDays = 7 - lastDay.getDay() - 1;
+    const lastDay = new Date(this.year, this.month + 1, 0);
+    const prevLastDay = new Date(this.year, this.month, 0);
+    const prevDays = prevLastDay.getDate();
+    const lastDate = lastDay.getDate();
+    const day = (firstDay.getDay() === 0) ? 6 : (firstDay.getDay() - 1); // Beginne mit Montag
+    const nextDays = 7 - lastDay.getDay() - 1;
 
       this.date.innerHTML = this.months[this.month] + " " + this.year;
 
@@ -150,7 +153,7 @@ export default {
 
       for (let i = 1; i <= lastDate; i++) {
         let event = false;
-        this.eventsArr.forEach((eventObj) => {
+        this.getEventsArr.forEach((eventObj) => {
           if (
             eventObj.day === i &&
             eventObj.month === this.month + 1 &&
@@ -306,37 +309,40 @@ documentClickHandler(e) {
       }
     },
 
-addEventSubmitHandler() {
-      const title = this.addEventTitle.value.trim();
-      const from = this.addEventFrom.value.trim();
-      const to = this.addEventTo.value.trim();
-      const anotherInput = this.addEventAnotherInput.value.trim();
+    addEventSubmitHandler() {
+  const title = this.addEventTitle.value.trim();
+  const from = this.addEventFrom.value.trim();
+  const to = this.addEventTo.value.trim();
+  const anotherInput = this.addEventAnotherInput.value.trim();
 
-      if (title === "" || from === "" || to === "" || anotherInput === "") {
-        alert("Please fill in all fields");
-        return;
-      }
+  if (title === "" || from === "" || to === "" || anotherInput === "") {
+    alert("Please fill in all fields");
+    return;
+  }
 
-      const eventObj = {
-        day: this.activeDay,
-        month: this.month + 1,
-        year: this.year,
-        events: [
-          {
-            title: title,
-            time: `${from} - ${to}`,
-            anotherInput: anotherInput, 
-          },
-        ],
-      };
+  const eventObj = {
+    day: this.activeDay,
+    month: this.month + 1,
+    year: this.year,
+    events: [
+      {
+        title: title,
+        time: `${from} - ${to}`,
+        anotherInput: anotherInput,
+      },
+    ],
+  };
 
-      this.eventsArr.push(eventObj);
-      this.initCalendar();
-      this.addEventWrapper.classList.remove("active");
-      this.addEventTitle.value = "";
-      this.addEventFrom.value = "";
-      this.addEventTo.value = "";
-    },
+  this.eventsArr.push(eventObj);
+  this.$store.commit('setEventsArr', this.eventsArr);
+  
+  this.updateEvents(this.activeDay); 
+
+  this.addEventWrapper.classList.remove("active");
+  this.addEventTitle.value = "";
+  this.addEventFrom.value = "";
+  this.addEventTo.value = "";
+},
 
     
 
@@ -420,7 +426,6 @@ addEventSubmitHandler() {
   if (dayIndex >= 0 && dayIndex < daysOfWeek.length) {
     return daysOfWeek[dayIndex];
   } else {
-   
     return "Invalid Day";
   }
 },
@@ -429,7 +434,6 @@ getActiveDay(date) {
   const day = new Date(this.year, this.month, date);
   let dayIndex = day.getDay(); 
   
-
   dayIndex = (dayIndex === 0) ? 6 : (dayIndex - 1);
 
   const dayName = this.getDayName(dayIndex);
@@ -439,6 +443,7 @@ getActiveDay(date) {
   console.log("Date:", date);
   console.log("Day Name:", dayName);
 
+ 
   if (this.eventDay) {
     this.eventDay.innerText = `Meilenstein`; 
   }
@@ -482,14 +487,16 @@ getActiveDay(date) {
       this.showDropdown = !this.showDropdown;
     },
 
-     updateStoreValues() {
-    
-    this.$store.commit('setMeilensteinInput', this.meilensteinInput);
-    this.$store.commit('setZielInput', this.zielInput);
-  },
+    updateStoreValues() {
+   
+      this.$store.commit('setMeilensteinInput', this.meilensteinInput);
+      this.$store.commit('setZielInput', this.zielInput);
+  
+      this.$store.commit('setEventsArr', this.eventsArr);
+    },
 
     selectAspiration(aspiration) {
-     
+
       this.$store.commit('setAspiration', aspiration);
       this.showDropdown = false; 
     }, 
@@ -499,46 +506,45 @@ getActiveDay(date) {
     
   },
   mounted() {
-    this.calendar = document.querySelector(".calendar");
-    this.date = document.querySelector(".date");
-    this.daysContainer = document.querySelector(".days");
-    this.prev = document.querySelector(".prev");
-    this.next = document.querySelector(".next");
-    this.todayBtn = document.querySelector(".today-btn");
-    this.gotoBtn = document.querySelector(".goto-btn");
-    this.dateInput = document.querySelector(".date-input");
-    this.eventDay = document.querySelector(".event-day");
-    this.eventDate = document.querySelector(".event-date");
-    this.eventsContainer = document.querySelector(".events");
-    this.addEventBtn = document.querySelector(".add-event");
-    this.addEventWrapper = document.querySelector(".add-event-wrapper ");
-    this.addEventCloseBtn = document.querySelector(".close ");
-    this.addEventTitle = document.querySelector(".event-name ");
-    this.addEventFrom = document.querySelector(".event-time-from ");
-    this.addEventTo = document.querySelector(".event-time-to ");
-    this.addEventSubmit = document.querySelector(".add-event-btn ");
-    this.addEventAnotherInput = document.querySelector(".another-input");
+  this.calendar = document.querySelector(".calendar");
+  this.date = document.querySelector(".date");
+  this.daysContainer = document.querySelector(".days");
+  this.prev = document.querySelector(".prev");
+  this.next = document.querySelector(".next");
+  this.todayBtn = document.querySelector(".today-btn");
+  this.gotoBtn = document.querySelector(".goto-btn");
+  this.dateInput = document.querySelector(".date-input");
+  this.eventDay = document.querySelector(".event-day");
+  this.eventDate = document.querySelector(".event-date");
+  this.eventsContainer = document.querySelector(".events");
+  this.addEventBtn = document.querySelector(".add-event");
+  this.addEventWrapper = document.querySelector(".add-event-wrapper ");
+  this.addEventCloseBtn = document.querySelector(".close ");
+  this.addEventTitle = document.querySelector(".event-name ");
+  this.addEventFrom = document.querySelector(".event-time-from ");
+  this.addEventTo = document.querySelector(".event-time-to ");
+  this.addEventSubmit = document.querySelector(".add-event-btn ");
+  this.addEventAnotherInput = document.querySelector(".another-input");
+  this.eventsArr = this.$store.getters.getEventsArr;
+  
+  this.prev.addEventListener("click", this.prevMonth);
+  this.next.addEventListener("click", this.nextMonth);
+  this.addListner();
+  this.todayBtn.addEventListener("click", this.todayBtnClick);
+  this.dateInput.addEventListener("input", this.dateInputChange);
+  this.gotoBtn.addEventListener("click", this.gotoDate);
+  this.addEventBtn.addEventListener("click", this.addEventBtnClick);
+  this.addEventCloseBtn.addEventListener("click", this.addEventCloseBtnClick);
+  document.addEventListener("click", this.handleDocumentClick);
+  this.addEventTitle.addEventListener("input", this.addEventTitleInput);
+  this.addEventFrom.addEventListener("input", this.addEventFromInput);
+  this.addEventTo.addEventListener("input", this.addEventToInput);
+  this.addEventSubmit.addEventListener("click", this.addEventSubmitHandler);
 
-    this.initCalendar();
-
-    this.prev.addEventListener("click", this.prevMonth);
-    this.next.addEventListener("click", this.nextMonth);
-    this.addListner();
-    this.todayBtn.addEventListener("click", this.todayBtnClick);
-    this.dateInput.addEventListener("input", this.dateInputChange);
-    this.gotoBtn.addEventListener("click", this.gotoDate);
-    this.addEventBtn.addEventListener("click", this.addEventBtnClick);
-    this.addEventCloseBtn.addEventListener("click", this.addEventCloseBtnClick);
-    document.addEventListener("click", this.handleDocumentClick);
-    this.addEventTitle.addEventListener("input", this.addEventTitleInput);
-    this.addEventFrom.addEventListener("input", this.addEventFromInput);
-    this.addEventTo.addEventListener("input", this.addEventToInput);
-    this.addEventSubmit.addEventListener("click", this.addEventSubmitHandler);
-    this.addEventSubmit.addEventListener("click", this.addEventSubmitHandler);
-
-    this.getActiveDay(this.today);
-    this.updateEvents(this.today);
-  }
+  this.getActiveDay(this.today);
+  this.updateEvents(this.today);
+  this.initCalendar(); 
+}
 };
 </script>
 
@@ -810,7 +816,7 @@ getActiveDay(date) {
   padding: 20px;
 }
 .store-data {
-    border: 2px solid #87ceeb;
+    border: 2px solid #87ceeb; 
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;
