@@ -1,6 +1,6 @@
 <template>
   <div class="lebensbereiche-comp">
-    <div class="frame2">
+    <div>
       
       <div class="tags-container">
         <div
@@ -14,13 +14,11 @@
         </div>
       </div>
           <div class="input-wrapper">
-            <input type="text" v-model.trim="tag" @keypress.prevent.stop.enter="addTag">
-            <font-awesome-icon :icon="['fas', 'circle-plus']" @click.prevent.stop="addTag"/>
+            <input type="text" placeholder="Lebensbereich hinzufügen" v-model.trim="tag" @keypress.prevent.stop.enter="addTag">
+            <font-awesome-icon :icon="['fas', 'circle-plus']" @click.prevent.stop="addTag" id = "circlePlus"/>
           </div>
-    </div>
-    <div class="frame3"> 
-    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags(); $router.push('/AspirationwahlView')"/>
-</div>
+        </div>
+    <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags(); $router.push('/AspirationwahlView')" id = "arrowRight"/>
   </div>
 </template>
 
@@ -55,49 +53,104 @@ export default {
 </script>
 
 <style scoped>
+
+@media (min-width: 620px) and (max-width: 1280px){
+
+  #arrowRight{
+      margin-left: 182px;
+      height: 45px;
+      color: #f4f4f4;
+    }
+  #circlePlus{
+    height: 45px;
+    color: #f4f4f4;
+  }
+  .tags-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  input {
+      font-size: 16px;
+      font-size: max(16px, 1em);
+      font-family: inherit;
+      padding: 0.25em 0.5em;
+      background-color: #f4f4f4;
+      border: 2px solid var(--input-border);
+      border-radius: 4px;
+      width: 188px;
+      height: 30px;
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .input-wrapper{
+      display:flex;
+      justify-content: center;
+    }
+    
+}
+@media (max-width: 619px){
+
+  input {
+      font-size: 16px;
+      font-size: max(16px, 1em);
+      font-family: inherit;
+      padding: 0.25em 0.5em;
+      background-color: #f4f4f4;
+      border: 2px solid var(--input-border);
+      border-radius: 4px;
+      width: 190px;
+      height: 20px;
+      margin-right: 10px;
+      margin-top: 1px;
+  }
+  #circlePlus{
+    height: 30px;
+    color: #f4f4f4;
+  }
+  .input-wrapper{
+      display:flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  #arrowRight{
+      margin-left: 182px;
+      height: 45px;
+      color: #f4f4f4;
+    }
+.tags-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+  }
+}
 .lebensbereiche-comp {
   width: 50%;
   margin: auto;
 }
 
-.frame {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  margin-bottom: 5px;
-}
-
-.frame2 {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  margin-bottom: 5px;
-}
-
-.frame3{
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-}
 .tag {
   display: inline-block;
   padding: 8px 12px;
   margin-right: 10px;
   margin-bottom: 10px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #f4f4f4;
   border-radius: 8px;
-  background-color: #e0e0e0;
+  background-color: #928471;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .tag:hover {
-  background-color: #c0c0c0;
+  background-color: #776661;
 }
 
 .tag.selected {
-  background-color: #4caf50;
+  background-color: #2ecc71;
   color: #fff;
-  box-shadow: inset 5px 5px 10px #357a38, inset -5px -5px 10px #61bd61;
+ /* box-shadow: inset 5px 5px 10px #6C86C2, inset -5px -5px 10px #7893B6;*/
 }
 </style>

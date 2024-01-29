@@ -6,9 +6,8 @@
       @mouseover="highlightCircle('circle1')"
       @mouseout="resetHighlight('circle1')"
       @click="navigateTo('/')"
+      :class = "{'highlighted': checkRoute('NamensEingabeView')}"
     >
-    <!-- @click="navigateTo('/')" -->
-    <!--  <router-link to="/" @click="navigateTo('/')">1</router-link> -->  
     </div>
     <div class="connector"></div>
     <div
@@ -17,6 +16,7 @@
       @mouseover="highlightCircle('circle2')"
       @mouseout="resetHighlight('circle2')"
       @click="navigateTo('LebensBereicheView')"
+      :class = "{'highlighted': checkRoute('LebensBereicheView')}"
     >
     
     </div>
@@ -28,6 +28,7 @@
   @mouseover="highlightCircle('circle3')"
   @mouseout="resetHighlight('circle3')"
   @click="navigateTo('/AspirationwahlView')"
+  :class = "{'highlighted': checkRoute('AspirationsWahlView')}"
 >
   
 </div>
@@ -38,19 +39,8 @@
       @mouseover="highlightCircle('circle4')"
       @mouseout="resetHighlight('circle4')"
       @click="navigateTo('meilensteine-waehlen')"
+      :class = "{'highlighted': checkRoute('meilensteine-waehlen')}"
     >
-    
-    
-    </div>
-    <div class="connector"></div>
-    <div
-      class="circle"
-      ref="circle5"
-      @mouseover="highlightCircle('circle5')"
-      @mouseout="resetHighlight('circle5')"
-      @click="navigateTo('/WochenAblaufView')"
-    >
-  
     </div>
   </div>
 </template>
@@ -75,17 +65,72 @@ export default {
         circle.style.boxShadow = '5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff';
       }
     },
+    checkRoute(route){
+      return this.$route.name == route;
+    },
   },
 };
 </script>
 
 <style scoped>
+
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.circle.highlighted{
+    background-color: #85A0A9;
+  }
 
+@media(max-width: 499px){
+  .circle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease-in-out;
+  }
+  .connector {
+  position: relative;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 2px;
+  background-color: black;
+}
+}
+
+
+@media (min-width: 500px) and (max-width: 1280px){
+
+  .circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+  .connector {
+  position: relative;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 2px;
+  background-color: black;
+}
+
+}
+@media (min-width: 1281px){
 .circle {
   position: relative;
   width: 80px;
@@ -95,11 +140,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
   box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
   transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
+}
+.connector {
+  position: relative;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 2px;
+  background-color: black;
 }
 
 .circle:hover {
@@ -119,13 +170,6 @@ export default {
   position: absolute;
 }
 
-.connector {
-  position: relative;
-  left: 30px;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 2px;
-  background-color: black;
-  box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
+
 }
 </style>
