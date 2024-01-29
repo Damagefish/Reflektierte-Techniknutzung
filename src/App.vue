@@ -34,12 +34,15 @@ export default {
 </script>
 
 <style>
+*{
+  background-color: #494448;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #d31c35;
+  color: #f4f4f4;
 }
 
  .abstand{
