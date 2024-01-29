@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="footer-section"> <font-awesome-icon :icon="['fas', 'calendar']" @click="$router.push('/barchart')"/></div>
+    <div class="footer-section"> <font-awesome-icon :icon="['fas', 'calendar']" @click="$router.push('/meilensteine-waehlen')"/></div>
     <div class="footer-section"> <font-awesome-icon :icon="['fas', 'house']" @click="$router.push('/mainscreen')"/></div>
     <div class="footer-section"> <font-awesome-icon :icon="['fas', 'clock']" @click="$router.push('/checkIn1View')"/></div>
   </div>
