@@ -28,17 +28,18 @@
 
         </div>
       </div>
-
-
-      <div class="middle">
-        <p>{{ getAspirationFromStore }}</p>
-         <p>{{ getIstZustandFromStore }}</p>
-
-         <button class="add-event">
+      <div class="right">
+        <div class="today-date">
+          <div class="event-day"></div>
+          <div class="event-date"></div>
+          <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "$router.push('/MainScreen')"/>
+        </div>
+        <div class="events"></div>
+        <button class="add-event">
             <i class="fas fa-plus"></i>
-          </button>
+            </button>
 
-          <div class="add-event-wrapper">
+           <div class="add-event-wrapper">
             <div class="add-event-header">
               <div class="title">Meilenstein hinzufügen</div>
               <i class="fas fa-times close"></i>
@@ -48,39 +49,27 @@
              
       
             <div class="add-event-body">
-  <div class="add-event-input">
-    <input type="text" placeholder="Meilenstein Name" class="event-name" />
-  </div>
+            <div class="add-event-input">
+            <input type="text" placeholder="Meilenstein Name" class="event-name" v-model="meilensteinInput"/>
+           </div>
 
-  <div class="add-event-input">
-    <input type="text" placeholder="Event Time From" class="event-time-from" />
-  </div>
+             <div class="add-event-input">
+             <input type="text" placeholder="Event Time From" class="event-time-from" />
+              </div>
 
-  <div class="add-event-input">
-    <input type="text" placeholder="Event Time To" class="event-time-to" />
-  </div>
+               <div class="add-event-input">
+              <input type="text" placeholder="Event Time To" class="event-time-to" />
+              </div>
 
-  <!-- New input field -->
-  <div class="add-event-input">
-    <input type="text" placeholder="Ziel zum erreichen des Meilensteins" class="another-input" />
-  </div>
-</div>
-            <div class="add-event-footer">
-              <button class="add-event-btn">Add Event</button>
-            </div>
-          </div>
-      </div>
-
-
-
-
-
-      <div class="right">
-        <div class="today-date">
-          <div class="event-day"></div>
-          <div class="event-date"></div>
-        </div>
-        <div class="events"></div>
+              
+                 <div class="add-event-input">
+                 <input type="text" placeholder="Ziel zum erreichen des Meilensteins" class="another-input" v-model="zielInput" />
+                    </div>
+                      </div>
+                     <div class="add-event-footer">
+                      <button @click="updateStoreValues" class="add-event-btn">Add Event</button>
+                     </div>
+                      </div>
       </div>
     </div>
   </div>
@@ -122,8 +111,10 @@ export default {
       addEventFrom: null,
       addEventTo: null,
       addEventSubmit: null,
-
-      
+      showDropdown: false,
+      aspirationOptions: ["Option 1", "Option 2", "Option 3"], 
+      zielInput: '',
+      meilensteinInput: '',
 
       today: new Date(),
       activeDay: null,
@@ -285,6 +276,7 @@ documentClick(e) {
 },
 
 
+
 gotoDate() {
   const dateArr = this.dateInput.value.split("/");
 
@@ -330,7 +322,7 @@ addEventSubmitHandler() {
           {
             title: title,
             time: `${from} - ${to}`,
-            anotherInput: anotherInput, // Include the new input field value in the events
+            anotherInput: anotherInput, 
           },
         ],
       };
@@ -422,20 +414,19 @@ addEventSubmitHandler() {
 
   console.log("Day Index:", dayIndex);
 
-  // Überprüfen, ob der Index im gültigen Bereich liegt
   if (dayIndex >= 0 && dayIndex < daysOfWeek.length) {
     return daysOfWeek[dayIndex];
   } else {
-    // Fallback-Wert, wenn der Index ungültig ist
+   
     return "Invalid Day";
   }
 },
 
 getActiveDay(date) {
   const day = new Date(this.year, this.month, date);
-  let dayIndex = day.getDay(); // Werte von 0 (Sonntag) bis 6 (Samstag)
+  let dayIndex = day.getDay(); 
   
-  // Anpassung des Index, damit 0 (Sonntag) zu 6 wird, 1 (Montag) zu 0, usw.
+
   dayIndex = (dayIndex === 0) ? 6 : (dayIndex - 1);
 
   const dayName = this.getDayName(dayIndex);
@@ -445,9 +436,8 @@ getActiveDay(date) {
   console.log("Date:", date);
   console.log("Day Name:", dayName);
 
-  // Überprüfen, ob das eventDay-Element vorhanden ist
   if (this.eventDay) {
-    this.eventDay.innerText = `Meilenstein`; // Hier können Sie Ihren eigenen Text setzen
+    this.eventDay.innerText = `Meilenstein`; 
   }
 
   this.eventDate.innerHTML = `${date} ${this.months[this.month]} ${this.year}`;
@@ -483,6 +473,22 @@ getActiveDay(date) {
       this.addEventTitle.value = "";
       this.addEventFrom.value = "";
       this.addEventTo.value = "";
+    },
+
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown;
+    },
+
+     updateStoreValues() {
+    
+    this.$store.commit('setMeilensteinInput', this.meilensteinInput);
+    this.$store.commit('setZielInput', this.zielInput);
+  },
+
+    selectAspiration(aspiration) {
+     
+      this.$store.commit('setAspiration', aspiration);
+      this.showDropdown = false; 
     }
     
   },
@@ -786,15 +792,25 @@ getActiveDay(date) {
   .middle {
   flex: 1;
   margin: 0 20px;
-  border: 2px solid #ddd; /* Rahmenstil anpassen */
+  border: 2px solid #ddd; 
   border-radius: 8px;
   padding: 20px;
 }
 .right {
   flex: 1;
   margin: 0 20px;
-  border: 2px solid #ddd; /* Rahmenstil anpassen */
+  border: 2px solid #ddd; 
   border-radius: 8px;
   padding: 20px;
 }
+.store-data {
+    border: 2px solid #87ceeb;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .store-data p {
+    margin: 0; 
+  }
 </style>
