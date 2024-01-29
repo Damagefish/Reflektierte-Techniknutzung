@@ -20,7 +20,8 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
-
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faArrowRight)
@@ -30,5 +31,7 @@ library.add(faHome)
 library.add(faClock)
 library.add(faChartColumn)
 library.add(faCirclePlus)
+library.add(faCircleCheck)
+library.add(faCalendar)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).use(store).mount('#app')
