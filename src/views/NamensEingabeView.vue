@@ -41,12 +41,12 @@
       --input-border: #776661;
 }
     #arrowRight{
-      margin-left: 325px;
+      margin-left: 258px;
       height: 45px;
       color: #f4f4f4
     }
     #arrowContainer{
-      margin-top: 244px;
+      margin-top: 40px;
     }
     input {
       font-size: 16px;

@@ -57,18 +57,20 @@ export default {
 @media (min-width: 620px) and (max-width: 1280px){
 
   #arrowRight{
-      margin-left: 182px;
+      margin-left: 382px;
+      margin-top: 48px;
       height: 45px;
       color: #f4f4f4;
     }
   #circlePlus{
-    height: 45px;
+    height: 40px;
     color: #f4f4f4;
   }
   .tags-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 20px;
   }
   input {
       font-size: 16px;
@@ -81,11 +83,12 @@ export default {
       width: 188px;
       height: 30px;
       margin-right: 10px;
-      margin-top: 4px;
+      margin-top: 1px;
     }
     .input-wrapper{
       display:flex;
       justify-content: center;
+      margin-top: 10px;
     }
     
 }
@@ -112,6 +115,7 @@ export default {
       display:flex;
       justify-content: center;
       flex-wrap: wrap;
+      margin-top: 10px;
     }
   #arrowRight{
       margin-left: 182px;
@@ -125,6 +129,7 @@ export default {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 15px;
+    margin-top: 15px;
   }
 }
 .lebensbereiche-comp {
