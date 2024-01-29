@@ -133,12 +133,12 @@ export default {
   methods: {
     initCalendar() {
       const firstDay = new Date(this.year, this.month, 1);
-      const lastDay = new Date(this.year, this.month + 1, 0);
-      const prevLastDay = new Date(this.year, this.month, 0);
-      const prevDays = prevLastDay.getDate();
-      const lastDate = lastDay.getDate();
-      const day = firstDay.getDay();
-      const nextDays = 7 - lastDay.getDay() - 1;
+    const lastDay = new Date(this.year, this.month + 1, 0);
+    const prevLastDay = new Date(this.year, this.month, 0);
+    const prevDays = prevLastDay.getDate();
+    const lastDate = lastDay.getDate();
+    const day = (firstDay.getDay() === 0) ? 6 : (firstDay.getDay() - 1); // Beginne mit Montag
+    const nextDays = 7 - lastDay.getDay() - 1;
 
       this.date.innerHTML = this.months[this.month] + " " + this.year;
 
@@ -590,6 +590,9 @@ getActiveDay(date) {
     text-align: center;
   }
 
+  .weekdays div:nth-child(1) {
+    order: 7; /* Verschiebt Sonntag ans Ende */
+  }
   .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
