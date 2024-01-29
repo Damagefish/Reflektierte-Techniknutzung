@@ -22,6 +22,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faArrowRight)
@@ -33,5 +34,6 @@ library.add(faChartColumn)
 library.add(faCirclePlus)
 library.add(faCircleCheck)
 library.add(faCalendar)
+library.add(faTrash)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).use(store).mount('#app')
