@@ -15,10 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="frame3"> 
-      <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "setSelectedTags(); $router.push('/AspirationwahlView')"/>
   </div>
-    </div>
   </template>
   
   <script>
@@ -30,9 +27,6 @@
     },
     methods: {
       toggleTag(tag) {
-        if (this.selectedTags.includes(tag)) {
-          this.selectedTags = this.selectedTags.filter((selectedTag) => selectedTag !== tag);
-        }
         document.getElementById("tag").classList.toggle("selected")
     },
   }, 
