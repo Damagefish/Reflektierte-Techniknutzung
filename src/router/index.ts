@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/AspirationwahlView',
-    name: 'AspirationwahlView',
+    name: 'AspirationsWahlView',
     component: AspirationwahlView
   },
   {
