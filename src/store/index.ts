@@ -6,7 +6,7 @@ export default new Vuex.Store({
     state:{
         name: "", //gewählter Name des Users
         selectedTags: [], //Tags, die beim ersten Mal ausgewählt werden
-        aspirationTags: [{}], //Tags, die für die Aspiration ausgewählt werden
+        aspirationTags: [], //Tags, die für die Aspiration ausgewählt werden
         aspiration: "",
         istZustand: "", //Ist Zustand: Der aktuelle Stand des Nutzers
         zielInput: "",
@@ -54,8 +54,8 @@ export default new Vuex.Store({
         setSelectedTags(state, newTags){
             state.selectedTags = newTags;
         }, 
-        addAspiration(state, newAspirationTags){
-            state.aspirationTags.push(newAspirationTags);
+        setAspirationTags(state, newAspirationTags){
+            state.aspirationTags = newAspirationTags
         },
         setAspiration(state, newAspiration){
             state.aspiration = newAspiration;
