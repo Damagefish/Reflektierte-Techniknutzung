@@ -144,6 +144,7 @@
 <script>
 export default {
   data() {
+    return {
         entries: JSON.parse(localStorage.getItem('entries')) || [],
         showNewEntry: false,
         showEntries: false,
@@ -348,6 +349,7 @@ export default {
         },
         
       },
+  }
 </script>
 
 <style scoped>
