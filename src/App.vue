@@ -5,7 +5,7 @@
     <nav>
     </nav>
     <router-view />
-    <Footer>
+    <Footer  v-if="isFooterVisible">
       <FooterSection>Teil 1</FooterSection>
       <FooterSection>Teil 2</FooterSection>
       <FooterSection>Teil 3</FooterSection>

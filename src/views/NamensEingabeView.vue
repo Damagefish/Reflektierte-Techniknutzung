@@ -24,6 +24,7 @@
     data() {
         return {
             name: ''
+            isFooterVisible: true,
         }
     },
     methods:{
