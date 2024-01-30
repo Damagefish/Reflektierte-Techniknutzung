@@ -54,11 +54,11 @@
            </div>
 
              <div class="add-event-input">
-             <input type="text" placeholder="Event Time From" class="event-time-from" />
+             <input type="text" placeholder="Startzeit" class="event-time-from" />
               </div>
 
                <div class="add-event-input">
-              <input type="text" placeholder="Event Time To" class="event-time-to" />
+              <input type="text" placeholder="Abschlusszeit" class="event-time-to" />
               </div>
 
               
@@ -72,6 +72,7 @@
                       </div>
       </div>
     </div>
+    <section></section>
   </div>
 </template>
 
@@ -545,6 +546,7 @@ getActiveDay(date) {
 <style scoped>
   #app {
     font-family: 'Arial', sans-serif;
+    color: #a39494;
   }
 
   .container {
@@ -710,7 +712,7 @@ getActiveDay(date) {
   }
 
   .title{
-    background-color: white;
+    background-color: #434061;
   }
 
   .add-event-wrapper {
@@ -719,8 +721,8 @@ getActiveDay(date) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #516795;
+    border: 1px solid #000000;
     border-radius: 8px;
     padding: 20px;
     z-index: 1000;
@@ -747,7 +749,7 @@ getActiveDay(date) {
 
   .add-event-input input {
     width: 100%;
-    padding: 8px;
+    padding: 2px;
     border: 1px solid #ddd;
     border-radius: 4px;
   }
@@ -766,19 +768,16 @@ getActiveDay(date) {
   }
 
   .add-event {
-    position: relative; 
-    bottom: 0;
-    right: 0; 
+    position: relative;
     width: 60px;
     height: 60px;
     background-color: #1e4770;
     color: #fff;
     border: none;
-    border-radius: 50%;
+    border-radius: 8px; /* Änderung: Viereckige Form */
     padding: 10px;
     cursor: pointer;
-    box-shadow: 
-      -10px -10px 20px rgba(255, 255, 255, 0.1),
+    box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.1),
       10px 10px 20px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
     overflow: hidden;
@@ -822,5 +821,9 @@ getActiveDay(date) {
 
   .store-data p {
     margin: 0; 
+  }
+
+  section{
+    margin: 20px;
   }
 </style>
