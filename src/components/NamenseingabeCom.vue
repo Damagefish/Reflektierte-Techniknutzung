@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+
+*{
+  height: 100vh;
+}
 .lebensbereiche-comp {
   width: 50%;
   margin: auto;
@@ -117,5 +121,16 @@ export default {
 
 .add-more-container button:hover {
   box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
+}
+
+@media only screen and (max-width: 320px) {
+  .lebensbereiche-comp {
+    width: 90%;
+  }
+
+  .frame {
+    padding: 10px;
+    height: 100vh;
+  }
 }
 </style>

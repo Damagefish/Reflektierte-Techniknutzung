@@ -7,7 +7,11 @@
           <h4>Bevor wir beginnen: </h4>
           <h4>Wie willst du in der App genannt werden?</h4>
         </div>  
+        <section>
+
+            
         <input v-model="name" placeholder="Wie willst du genannt werden?" type = "text"/>
+        </section>
         <div id= "arrowContainer">
         <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "changeName(); $router.push('/LebensbereicheView')" id = "arrowRight"/>
         </div>
@@ -99,6 +103,24 @@
   .button{
     background-color: white;
   }
+}
+
+@media (max-width: 375px) {
+  /* Specific styles for iPhone SE */
+  input {
+    margin-top: 10px; /* Adjust as needed for iPhone SE */
+  }
+
+  .textbox {
+    margin-top: 10px; /* Adjust as needed for iPhone SE */
+  }
+  #arrowContainer{
+      margin-top: -20px;
+      height: 50%;
+    }
+    section{
+      margin-bottom: 10px;
+    }
 }
   </style>
   
