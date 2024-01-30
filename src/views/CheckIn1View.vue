@@ -154,7 +154,8 @@ export default {
         selectedTip: '',
         highlight: '',
         improveText: '',
-      }},
+      };
+  },
 
       computed: {
         averageWellBeing() {
