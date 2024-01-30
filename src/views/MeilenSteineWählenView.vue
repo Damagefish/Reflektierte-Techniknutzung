@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Footer from './components/FooterComp.vue';
-import FooterSection from './components/FooterSection.vue';
+import Footer from '@/components/FooterComp.vue';
+import FooterSection from '@/components/FooterSection.vue';
 import KalenderComp from '@/components/KalenderComp.vue'
 
 export default {
