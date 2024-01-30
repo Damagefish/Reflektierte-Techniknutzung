@@ -3,43 +3,35 @@
     <div
       class="circle"
       ref="circle1"
-      @mouseover="highlightCircle('circle1')"
-      @mouseout="resetHighlight('circle1')"
       @click="navigateTo('/')"
-      :class = "{'highlighted': checkRoute('NamensEingabeView')}"
+      :class = "{'highlighted': checkRoute('NamensEingabeView') || checkHighlightFirst()}"
     >
     </div>
-    <div class="connector"></div>
+    <div class="connector" id = "connector1" :class = "{'highlighted': checkHighlightFirst()}"></div>
     <div
       class="circle"
       ref="circle2"
-      @mouseover="highlightCircle('circle2')"
-      @mouseout="resetHighlight('circle2')"
       @click="navigateTo('LebensBereicheView')"
-      :class = "{'highlighted': checkRoute('LebensBereicheView')}"
+      :class = "{'highlighted': checkHighlightFirst()}"
     >
     
     </div>
 
-    <div class="connector"></div>
+    <div class="connector" id = "connector2" :class = "{'highlighted': checkHighlightSecond()}" ></div>
     <div
   class="circle"
   ref="circle3"
-  @mouseover="highlightCircle('circle3')"
-  @mouseout="resetHighlight('circle3')"
   @click="navigateTo('/AspirationwahlView')"
-  :class = "{'highlighted': checkRoute('AspirationsWahlView')}"
+  :class = "{'highlighted': checkHighlightSecond()}"
 >
   
 </div>
-    <div class="connector"></div>
+    <div class="connector" id = "connector3" :class = "{'highlighted': checkHighlightThird()}"></div>
     <div
       class="circle"
       ref="circle4"
-      @mouseover="highlightCircle('circle4')"
-      @mouseout="resetHighlight('circle4')"
       @click="navigateTo('meilensteine-waehlen')"
-      :class = "{'highlighted': checkRoute('meilensteine-waehlen')}"
+      :class = "{'highlighted': checkHighlightThird()}"
     >
     </div>
   </div>
@@ -50,23 +42,24 @@ export default {
   methods: {
     navigateTo(route) {
   this.$router.push({ path: route });
-},
-
-    highlightCircle(circleRef) {
-      const circle = this.$refs[circleRef];
-      if (circle) {
-        circle.style.boxShadow = 'inset 8px 8px 15px #bcbcbc, inset -8px -8px 15px #ffffff';
-      }
-    },
-
-    resetHighlight(circleRef) {
-      const circle = this.$refs[circleRef];
-      if (circle) {
-        circle.style.boxShadow = '5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff';
-      }
     },
     checkRoute(route){
       return this.$route.name == route;
+    },
+    checkHighlightFirst(){
+      if((this.$route.name == 'LebensBereicheView') || (this.$route.name == 'AspirationsWahlView') ||(this.$route.name == 'meilensteine-waehlen')){
+          return true;
+      }
+    }, 
+    checkHighlightSecond(){
+      if((this.$route.name == 'AspirationsWahlView') ||(this.$route.name == 'meilensteine-waehlen')){
+          return true;
+      }
+    },
+    checkHighlightThird(){
+      if((this.$route.name == 'meilensteine-waehlen')){
+          return true;
+      }
     },
   },
 };
@@ -89,11 +82,10 @@ export default {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #e0e0e0;
+  background-color: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: box-shadow 0.3s ease-in-out;
   }
   .connector {
   position: relative;
@@ -102,6 +94,9 @@ export default {
   width: 60px;
   height: 2px;
   background-color: black;
+}
+.connector.highlighted{
+  background-color:#85A0A9
 }
 }
 
@@ -113,11 +108,10 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #e0e0e0;
+  background-color: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: box-shadow 0.3s ease-in-out;
 }
 
   .connector {
@@ -136,11 +130,10 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #e0e0e0;
+  background-color: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
   transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -152,24 +145,6 @@ export default {
   height: 2px;
   background-color: black;
 }
-
-.circle:hover {
-  box-shadow: 8px 8px 15px #bcbcbc, -8px -8px 15px #ffffff;
-}
-
-.circle:active {
-  transform: scale(0.9);
-}
-
-.inner-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid #4d4d4d;
-  background-color: #e0e0e0;
-  position: absolute;
-}
-
 
 }
 </style>
