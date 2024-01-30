@@ -35,7 +35,6 @@
           <div class="event-day"></div>
           <div class="event-date"></div>
           <div v-if = "siteNotEntered">
-          <font-awesome-icon :icon="['fas', 'circle-check']" @click = "$router.push('/MainScreen'); toggleFirstTimeEnter();"/>
           </div>
         </div>
         <div class="events"></div>
@@ -75,6 +74,7 @@
                      </div>
                       </div>
       </div>
+      <font-awesome-icon :icon="['fas', 'circle-check']" @click = "$router.push('/MainScreen'); toggleFirstTimeEnter();" id = "checkIcon" v-if="siteNotEntered"/>
       </div>
       
 
@@ -964,6 +964,14 @@ getActiveDay(date) {
       width: 40px;
       height: 40px;
       font-size: 16px;
+    }
+    #checkIcon{
+      margin-top: 15px;
+      height: 45px;
+      color: #f4f4f4;
+    }
+    .header{
+      margin-bottom: 15px;
     }
   }
 </style>
