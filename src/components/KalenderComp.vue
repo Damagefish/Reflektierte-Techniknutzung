@@ -780,7 +780,7 @@ getActiveDay(date) {
     background-color: #1e4770;
     color: #fff;
     border: none;
-    border-radius: 8px; /* Änderung: Viereckige Form */
+    border-radius: 8px; 
     padding: 10px;
     cursor: pointer;
     box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.1),
