@@ -26,10 +26,22 @@
       </div>
     </div>
   </div>
+  <Footer>
+      <FooterSection>Teil 1</FooterSection>
+      <FooterSection>Teil 2</FooterSection>
+      <FooterSection>Teil 3</FooterSection>
+    </Footer>
 </template>
 
 <script>
+import Footer from '@/components/FooterComp.vue';
+import FooterSection from '@/components/FooterSection.vue';
 export default {
+  components: {
+    Footer,
+    FooterSection,
+   
+  },
   computed: {
     getAspirationFromStore() {
       return this.$store.getters.getAspiration;

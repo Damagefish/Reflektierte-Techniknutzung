@@ -5,26 +5,15 @@
     <nav>
     </nav>
     <router-view />
-    <Footer  v-if="isFooterVisible">
-      <FooterSection>Teil 1</FooterSection>
-      <FooterSection>Teil 2</FooterSection>
-      <FooterSection>Teil 3</FooterSection>
-    </Footer>
   </div>
 </template>
 
 <script>
-import Footer from './components/FooterComp.vue';
-import FooterSection from './components/FooterSection.vue';
 
 
 export default {
   name: 'App',
-  components: {
-    Footer,
-    FooterSection,
-   
-  },
+
 };
 </script>
 
