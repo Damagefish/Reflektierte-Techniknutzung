@@ -32,9 +32,7 @@
         <div class="today-date">
           <div class="event-day"></div>
           <div class="event-date"></div>
-          <div v-if = "siteNotEntered">
-          <font-awesome-icon :icon="['fas', 'circle-check']" @click = "$router.push('/MainScreen'); toggleFirstTimeEnter();"/>
-          </div>
+          <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "$router.push('/MainScreen')"/>
         </div>
         <div class="events"></div>
         <button class="add-event">
@@ -120,7 +118,6 @@ export default {
       aspirationOptions: ["Option 1", "Option 2", "Option 3"], 
       zielInput: '',
       meilensteinInput: '',
-      siteNotEntered: this.$store.getters.getFirstTimeCalendar,
 
       today: new Date(),
       activeDay: null,
@@ -140,7 +137,7 @@ export default {
     const prevLastDay = new Date(this.year, this.month, 0);
     const prevDays = prevLastDay.getDate();
     const lastDate = lastDay.getDate();
-    const day = (firstDay.getDay() === 0) ? 6 : (firstDay.getDay() - 1); // Beginne mit Montag
+    const day = (firstDay.getDay() === 0) ? 6 : (firstDay.getDay() - 1); 
     const nextDays = 7 - lastDay.getDay() - 1;
 
       this.date.innerHTML = this.months[this.month] + " " + this.year;
@@ -499,9 +496,6 @@ getActiveDay(date) {
 
       this.$store.commit('setAspiration', aspiration);
       this.showDropdown = false; 
-    }, 
-    toggleFirstTimeEnter(){
-      this.$store.commit('toggleFirstEnterCalendar');
     }
     
   },
@@ -713,6 +707,10 @@ getActiveDay(date) {
 
   .event-time {
     color: #555;
+  }
+
+  .title{
+    background-color: white;
   }
 
   .add-event-wrapper {
