@@ -1,11 +1,13 @@
 <template>
   <div class="container">
+    <div class="frame">
+      
+    </div>
+
     <div class="rectangle horizontal" @click="handleClick">
       <div v-if="getAspirationFromStore" class="store-data">
         <p>{{ getAspirationFromStore }}</p>
       </div>
-    </div>
-    <div class="rectangle vertical" @click="handleClick">
       <div v-if="showAdditionalInfo" class="additional-info-container">
         <div v-if="showIstZustand" class="store-data">
           <h1>IST ZUSTAND</h1>
@@ -17,7 +19,6 @@
               <p>{{ eventDetail.title }}</p>
               <p>{{ eventDetail.time }}</p>
               <p :style="{ backgroundColor: eventDetail.anotherInputBackgroundColor }">{{ eventDetail.anotherInput }}</p>
-  
             </div>
           </div>
         </div>
@@ -66,45 +67,37 @@ export default {
 <style scoped>
 .container {
   position: relative;
-  width: 50vw;
-  height: 65vh;
+  width: 100%;
+  max-width: 375px; /* Maximale Breite für iPhone SE */
+  height: 100vh; /* Volle Höhe des Viewports */
   border: 1px solid #ccc;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  margin: 0 auto; /* Zentrierung auf dem Bildschirm */
   z-index: 1;
 }
 
 .rectangle {
-  position: absolute;
+  position: relative; /* Änderung von absolute zu relative */
+  width: 100%; /* Volle Breite des Containers */
+  height: auto; /* Automatische Höhe basierend auf dem Inhalt */
   border-radius: 16px;
   cursor: pointer;
-}
-
-.horizontal {
-  width: 50%;
-  height: 160px;
-  top: 25px;
-  left: 25%;
+  margin-top: 20px; /* Abstand zum vorherigen Element */
   background: linear-gradient(145deg, #d2d6db, #f3f5f8);
   box-shadow: 10px 10px 20px #4b4444, -10px -10px 20px #4b4444;
 }
 
-.vertical {
-  width: 75%;
-  height: 200px;
-  top: 32.5%;
-  left: 11.5%;
-  background: linear-gradient(145deg, #d2d6db, #f3f5f8);
-  box-shadow: 10px 10px 20px #4b4444, -10px -10px 20px #4b4444;
-}
-
-.store-data{
-
+.store-data {
   background-color: white;
 }
 
-.additional-info-container{
+.additional-info-container {
   background-color: white;
+  padding: 10px; /* Zusätzlicher Abstand für den Inhalt */
+}
+
+.frame {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
 }
 </style>
