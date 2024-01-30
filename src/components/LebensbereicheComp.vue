@@ -154,8 +154,7 @@ export default {
 }
 
 .tag.selected {
-  background-color: #2ecc71;
+  background-color: #85A0A9;
   color: #fff;
- /* box-shadow: inset 5px 5px 10px #6C86C2, inset -5px -5px 10px #7893B6;*/
 }
 </style>

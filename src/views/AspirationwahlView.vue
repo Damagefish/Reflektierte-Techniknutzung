@@ -192,6 +192,6 @@ input {
     .tag.selected {
     background-color: #85A0A9;
     color: #fff;
-    box-shadow: inset 5px 5px 10px #357a38, inset -5px -5px 10px #61bd61;
+    box-shadow: inset 5px 5px 10px #5A6C9B, inset -5px -5px 10px #687DA0;
     }
     </style>
