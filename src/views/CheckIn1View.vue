@@ -158,15 +158,7 @@ export default {
   },
 
       computed: {
-        averageWellBeing() {
-          if (this.entries.length === 0) {
-            return 0;
-          }
-
-          const sumWellBeing = this.entries.reduce((acc, entry) => acc + entry.wellBeing, 0);
-          return sumWellBeing / this.entries.length;
-          
-        },
+        
         mostCommonDisturbance() {
           if (this.entries.length === 0) {
             return "N/A";
