@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h2>Meilensteine Wählen</h2>
+    
     <KalenderComp/>
-    <!-- Fehlender Header-->
-    <!--Erklärungstext was zu tun ist-->
-    {{ $store.state.aspirationTags }}
+   
   </div>
 
 </template>

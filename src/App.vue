@@ -3,11 +3,6 @@
   <div>
     <section class="abstand"> </section>
     <nav>
-    
-      <router-link to="/barchart">Bar Chart</router-link> | 
-      <router-link to="/BackgroundView">Background</router-link> 
-     
-      
     </nav>
     <router-view />
     <Footer>

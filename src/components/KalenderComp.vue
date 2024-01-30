@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="left">
+      <div class="main-container"> 
+
+        <div class="left">
         <div class="calendar">
           <div class="month">
             <i class="fas fa-angle-left prev"></i>
@@ -71,6 +73,10 @@
                      </div>
                       </div>
       </div>
+      </div>
+      
+
+
     </div>
     <section></section>
   </div>
@@ -366,7 +372,7 @@ updateEvents(date) {
             </div>
         </div>`;
       });
-      // Füge die Klasse 'event-day' zum entsprechenden Tag hinzu
+     
       const dayElement = document.querySelector(`.day[data-day="${date}"]`);
       if (dayElement) {
         dayElement.classList.add('event-day');
@@ -557,18 +563,27 @@ getActiveDay(date) {
 
   .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
 
-  .left {
-    flex: 1;
-    margin-right: 20px;
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calendar-container {
+    margin-bottom: 20px;
   }
 
   .right {
-    flex: 1;
+    margin-top: 20px;
   }
 
+  @media (max-width: 600px) {
+    .main-container {
+      flex-direction: column;
+    }
+  }
   .calendar {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -718,7 +733,8 @@ getActiveDay(date) {
   }
 
   .title{
-    background-color: #434061;
+    background-color: #516795;
+    color: white;
   }
 
   .add-event-wrapper {
@@ -747,10 +763,12 @@ getActiveDay(date) {
 
   .add-event-body {
     margin-bottom: 20px;
+    background-color: #516795;
   }
 
   .add-event-input {
     margin-bottom: 10px;
+    background-color:#87ceeb;
   }
 
   .add-event-input input {
@@ -762,6 +780,7 @@ getActiveDay(date) {
 
   .add-event-footer {
     text-align: right;
+    background-color: #516795;
   }
 
   .add-event-btn {
@@ -777,7 +796,7 @@ getActiveDay(date) {
     position: relative;
     width: 60px;
     height: 60px;
-    background-color: #1e4770;
+    background-color: #87ceeb;
     color: #fff;
     border: none;
     border-radius: 8px; 
@@ -831,5 +850,113 @@ getActiveDay(date) {
 
   section{
     margin: 20px;
+  }
+  @media only screen and (max-width: 600px) {
+  
+
+    .main-container {
+      flex-direction: column;
+    }
+
+    .left, .right {
+      margin: 0;
+    }
+
+    .calendar {
+      padding: 10px;
+    }
+
+    .date {
+      font-size: 16px;
+    }
+
+    .weekdays div {
+      font-size: 12px;
+    }
+
+    ::v-deep .day {
+      padding: 8px;
+    }
+
+    .goto-today {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .goto {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .date-input {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .goto-btn{
+  padding: 12px 16px 14px 16px; 
+  background-color: #87ceeb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  .today-btn {
+  padding: 12px 16px 14px 16px; 
+  background-color: #87ceeb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+  .today-btn {
+    margin-left: 10px; /* Adjust as needed */
+  }
+
+    .event-day {
+      font-size: 18px;
+    }
+
+    .event-date {
+      font-size: 12px;
+    }
+
+    .events {
+      margin-bottom: 10px;
+    }
+
+    .event {
+      padding: 8px;
+      margin-bottom: 8px;
+    }
+
+    .title i {
+      font-size: 14px;
+    }
+
+    .add-event-wrapper {
+      padding: 10px;
+    }
+
+    .add-event-input input {
+      padding: 2px;
+    }
+
+    .add-event-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .add-event {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
   }
 </style>
