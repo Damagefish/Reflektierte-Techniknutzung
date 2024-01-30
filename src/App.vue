@@ -3,7 +3,7 @@
   <div>
     <section class="abstand"> </section>
     <nav>
-      <router-link to="/test1View">test1View</router-link> | 
+    
       <router-link to="/barchart">Bar Chart</router-link> | 
       <router-link to="/BackgroundView">Background</router-link> 
      

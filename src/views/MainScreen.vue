@@ -1,16 +1,15 @@
 <template>
-  <div class="outer-container">
-    <div class="middle">
-      <div v-if="getAspirationFromStore" class="store-data" @click="handleAspirationClick">
+  <div class="container">
+    <div class="rectangle horizontal" @click="handleClick">
+      <div v-if="getAspirationFromStore" class="store-data">
         <p>{{ getAspirationFromStore }}</p>
       </div>
-
+    </div>
+    <div class="rectangle vertical" @click="handleClick">
       <div v-if="showAdditionalInfo" class="additional-info-container">
         <div v-if="showIstZustand" class="store-data">
           <h1>IST ZUSTAND</h1>
           <p>{{ getIstZustandFromStore }}</p>
-        </div>
-        <div v-else class="events-container">
           <h1>EVENTS</h1>
           <div v-for="(event, index) in getEventsArrFromStore" :key="index" class="store-data">
             <h2>Day {{ event.day }}</h2>
@@ -22,8 +21,6 @@
           </div>
         </div>
       </div>
-
-      <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click="$router.push('/KalenderView')"/>
     </div>
   </div>
 </template>
@@ -54,7 +51,7 @@ export default {
     };
   },
   methods: {
-    handleAspirationClick() {
+    handleClick() {
       this.showIstZustand = !this.showIstZustand;
       this.showAdditionalInfo = true;
     },
@@ -63,36 +60,47 @@ export default {
 </script>
 
 <style scoped>
-.middle {
-  flex: 1;
-  margin: 0 20px;
+.container {
+  position: relative;
+  width: 50vw;
+  height: 65vh;
+  border: 1px solid #ccc;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 1;
 }
 
-.store-data {
+.rectangle {
+  position: absolute;
+  border-radius: 16px;
   cursor: pointer;
-  border: 2px solid #87ceeb;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 20px;
 }
 
-.additional-info-container {
-  display: flex;
-  flex-wrap: wrap;
+.horizontal {
+  width: 50%;
+  height: 160px;
+  top: 25px;
+  left: 25%;
+  background: linear-gradient(145deg, #d2d6db, #f3f5f8);
+  box-shadow: 10px 10px 20px #4b4444, -10px -10px 20px #4b4444;
 }
 
-.additional-info-container .store-data {
-  flex: 1;
-  margin-right: 20px;
+.vertical {
+  width: 75%;
+  height: 200px;
+  top: 32.5%;
+  left: 11.5%;
+  background: linear-gradient(145deg, #d2d6db, #f3f5f8);
+  box-shadow: 10px 10px 20px #4b4444, -10px -10px 20px #4b4444;
 }
 
-.events-container {
-  margin-top: 20px;
+.store-data{
+
+  background-color: white;
 }
 
-.events-container h1 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.additional-info-container{
+  background-color: white;
 }
 </style>

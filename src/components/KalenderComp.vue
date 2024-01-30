@@ -344,38 +344,44 @@ documentClickHandler(e) {
 
     
 
-    updateEvents(date) {
-      let events = "";
-      this.eventsArr.forEach((event) => {
-        if (
-          date === event.day &&
-          this.month + 1 === event.month &&
-          this.year === event.year
-        ) {
-          event.events.forEach((event) => {
-            events += `<div class="event">
-                <div class="title">
-                  <i class="fas fa-circle"></i>
-                  <h3 class="event-title">${event.title}</h3>
-                </div>
-                <div class="event-time">
-                  <span class="event-time">${event.time}</span>
-                </div>
-                <div class="event-time">
-                  <span class="another-input">${event.anotherInput}</span>
-            
-                </div>
-            </div>`;
-          });
-        }
+updateEvents(date) {
+  let events = "";
+  this.eventsArr.forEach((event) => {
+    if (
+      date === event.day &&
+      this.month + 1 === event.month &&
+      this.year === event.year
+    ) {
+      event.events.forEach((event) => {
+        events += `<div class="event">
+            <div class="title">
+              <i class="fas fa-circle"></i>
+              <h3 class="event-title">${event.title}</h3>
+            </div>
+            <div class="event-time">
+              <span class="event-time">${event.time}</span>
+            </div>
+            <div class="event-time">
+              <span class="another-input">${event.anotherInput}</span>
+            </div>
+        </div>`;
       });
-      if (events === "") {
-        events = `<div class="no-event">
-                <h3>No Events</h3>
-            </div>`;
+      // Füge die Klasse 'event-day' zum entsprechenden Tag hinzu
+      const dayElement = document.querySelector(`.day[data-day="${date}"]`);
+      if (dayElement) {
+        dayElement.classList.add('event-day');
       }
-      this.eventsContainer.innerHTML = events;
-    },
+    }
+  });
+
+  if (events === "") {
+    events = `<div class="no-event">
+            <h3>No Events</h3>
+        </div>`;
+  }
+
+  this.eventsContainer.innerHTML = events;
+},
 
     addEventBtnClick() {
       this.addEventWrapper.classList.toggle("active");
