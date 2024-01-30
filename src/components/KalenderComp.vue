@@ -319,10 +319,7 @@ documentClickHandler(e) {
   const to = this.addEventTo.value.trim();
   const anotherInput = this.addEventAnotherInput.value.trim();
 
-  if (title === "" || from === "" || to === "" || anotherInput === "") {
-    alert("Please fill in all fields");
-    return;
-  }
+ 
 
   const eventObj = {
     day: this.activeDay,
