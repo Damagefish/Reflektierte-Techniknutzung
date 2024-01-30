@@ -1,58 +1,26 @@
 <template>
   <div id="app">
+    
     <div v-if="!showNewEntry && !showEntries">
-      <h1>Letzte Tagebucheinträge</h1>
-      <h2>Statistiken</h2>
+      <h1>Letzten Check-Ins</h1>
       <!-- <p>Durchschnittliches Wohlbefinden: {{ averageWellBeing.toFixed(2) }}</p> -->
       <!-- <p>Häufigster Störfaktor: {{ mostCommonDisturbance }}</p> -->
       <!-- <p>Häufigster Tipp: {{ mostCommonTip }}</p> -->
 
       
       <div class="flex-container">
-
         <div class="flex-child disturbance">
           <p>Was dich am meisten ablenkt und beschäftigt</p>
-          <h3>{{ mostCommonDisturbance }}</h3>
+          <h3 class="stat1">{{ mostCommonDisturbance }}</h3>
         </div>
         
         <div class="flex-child tip">
           <p>Diesen Tipp verendest du am meisten</p>
-          <h3>{{ mostCommonTip }}</h3>
+         <h3 class="stat2">{{ mostCommonTip }}</h3>
+
         </div>
-        
       </div>
-
-
-
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <p>Was dich am meisten ablenkt und beschäftigt</p>
-            <h3>{{ mostCommonDisturbance }}</h3>
-          </div>
-        </div>
-
-        
-        <div class="column">
-          <div class="card">
-            <p>Diesen Tipp verendest du am meisten</p>
-            <h3>{{ mostCommonTip }}</h3>
-          </div>
-        </div>
-      </div> 
-      
-<!--
-      <ul>
-        <li v-for="(entry, index) in entries" :key="index">
-          {{ entry.date }} - {{ entry.content }}
-          <button @click="openEntry(index)">{{ entry.date }}</button>
-          <button @click="deleteEntry(index)">X</button>
-        </li>
-      </ul>
-      <button @click="showNewEntryForm">Neuen Eintrag erstellen</button>
-    -->
-
-
+    
       <button @click="showNewEntryForm">Neuen Eintrag erstellen</button>
       <ul>
         <li v-for="(entry, index) in entries" :key="index">
@@ -61,24 +29,18 @@
           <button class="delete" @click="deleteEntry(index)">X</button>
         </li>
       </ul>
-
-    </div>
-      
-
-      
-      
-              
+    </div>            
     
     <!-- CHECK-IN EINTRAG ANSEHEN -->
     <div v-if="showEntries">
       <h1>Check-In vom {{ selectedEntry.date }}</h1>
-      <p>Wohlbefinden: {{ selectedEntry.highlight }}</p>
-      <p>Highlight: {{ selectedEntry.improveText }}</p>
+      <p>Wohlbefinden: {{ wellBeing }} </p>
+      <p>Deine Gedanken: {{ selectedEntry.highlight }}</p>
       <p>Störfaktoren: {{ selectedEntry.disturbances.join(', ') }}</p>
       <p>Tipp: {{ selectedEntry.selectedTip }}</p>
       <!-- Anzeige von Tipps basierend auf der Auswahl -->
       <div id="tipps-container">
-        {{ zeigeTippsInEintrag(selectedEntry.selectedTip) }}
+        <!-- {{ zeigeTippsInEintrag(selectedEntry.selectedTip) }} -->
       </div>
       <p>Besser machen: {{ selectedEntry.improveText }}</p>
       <button @click="showEntries = false">Zurück</button>
@@ -95,34 +57,28 @@
         </div>
         <p>Aktuelle Bewertung: {{ wellBeing }} </p>
         
-        <label>Was waren deine Highlights der letzten Zeit:</label>
-        <textarea v-model="highlight" placeholder="Warum fühlst du dich so?"></textarea>  
+        <label>Welche Gedanken schweben dir durch den Kopf?</label>
+        <textarea v-model="highlight" placeholder="Schreib auf..."></textarea>  
 
         <label>Störfaktoren im Alltag:</label>
         <select v-model="selectedDisturbances" multiple> <!-- multiple --> 
           <option value="Handynutzung">Handynutzung</option>
-          <option value="Social  Media">Social  Media</option>
+          <option value="Social Media">Social  Media</option>
           <option value="YouTube">YouTube</option>
           <option value="Arbeitsstress">Arbeitsstress</option>
           <option value="Familienprobleme">Familienprobleme</option>
           <!-- Weitere Optionen können hier hinzugefügt werden -->
         </select>
-
-        <!-- Anzeige von Störfaktor-Informationen basierend auf der Auswahl 
-        <div v-if="disturbanceInfo">
-          <p>{{ disturbanceInfo }}</p>
-        </div> 
-        -->
         
         <label>Tipp auswählen:</label>
         <select id="tip" name="tips" v-model="selectedTip" @change="zeigeTipps">
-          <option value="Tipp 1">Motivation finden</option>
-          <option value="Tipp 2">Prioritäten setzen</option>
-          <option value="Tipp 3">Folge deinem Herz</option>
-          <option value="Tipp 4">Schaffe Klarheit</option>
-          <option value="Tipp 5">Positiver Ausblick</option>
-          <option value="Tipp 6">Neue Perspektiven</option>
-          <option value="Tipp 7">Entscheidungen treffen</option>
+          <option value="Motivation finden">Motivation finden</option>
+          <option value="Prioritäten setzen">Prioritäten setzen</option>
+          <option value="Folge deinem Herz">Folge deinem Herz</option>
+          <option value="Schaffe Klarheit">Schaffe Klarheit</option>
+          <option value="Positiver Ausblick">Positiver Ausblick</option>
+          <option value="Neue Perspektiven">Neue Perspektiven</option>
+          <option value="Entscheidungen treffen">Entscheidungen treffen</option>
           <!-- Weitere Tipps können hier hinzugefügt werden -->
         </select>
 
@@ -131,8 +87,8 @@
           {{ zeigeTippsInEintrag(selectedTip) }}
         </div>
 
-        <label>Besser machen:</label>
-        <textarea v-model="improveText" placeholder="Schreibe hier, wie du deinen Tag verbessern kannst. Deine Gedanken sind wichtig!"></textarea>
+        <label>Welche Schritte willst du jetzt unternehmen?</label>
+        <textarea v-model="improveText" placeholder="Schreib auf..."></textarea>
 
         <button @click="cancelNewEntry" class="cancel">Abbrechen</button>
         <button type="submit">Eintrag speichern</button>
@@ -158,10 +114,18 @@ export default {
   },
 
       computed: {
-        
+        averageWellBeing() {
+          if (this.entries.length === 0) {
+            return 0;
+          }
+
+          const sumWellBeing = this.entries.reduce((acc, entry) => acc + entry.wellBeing, 0);
+          return sumWellBeing / this.entries.length;
+          
+        },
         mostCommonDisturbance() {
           if (this.entries.length === 0) {
-            return "N/A";
+            return "";
           }
 
           const disturbancesCount = {};
@@ -179,7 +143,7 @@ export default {
         },
         mostCommonTip() {
           if (this.entries.length === 0) {
-            return "N/A";
+            return "";
           }
 
           const tipsCount = {};
@@ -244,7 +208,7 @@ export default {
         tippsContainer.innerHTML = "";
        
         // Füge neue Tipps basierend auf der Auswahl hinzu
-        if (this.selectedTip === "Tipp 1") {
+        if (this.selectedTip === "Motivation finden") {
           tippsContainer.innerHTML = `
           <h3>Motivation finden</h3>
           <p>Entdecke deine tiefsten Antriebe und Ziele, um eine nachhaltige Motivation zu schaffen.</p>
@@ -254,7 +218,7 @@ export default {
           <li>Unterstützung für Ziele: Bestimme, welche Ressourcen du benötigst, um dein Ziel zu verfolgen.</li>
           <li>Handlungsschritte: Entwickle konkrete Schritte, um dein Ziel zu erreichen.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 2") {
+        } else if (this.selectedTip === "Prioritäten setzen") {
           tippsContainer.innerHTML = `
           <h3>Prioritäten setzen</h3>
           <p>Strukturiere deine Aufgaben nach Dringlichkeit und Wichtigkeit, um effizienter zu handeln.</p>
@@ -264,7 +228,7 @@ export default {
           <li>Zeitmanagement: Schaffe Zeit, indem du unwichtige Aufgaben delegierst oder aufschiebst.</li>
           <li>Prioritäten setzen: Bestimme deine ersten und zweiten Prioritäten.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 3") {
+        } else if (this.selectedTip === "Folge deinem Herz") {
           tippsContainer.innerHTML = `
           <h3>Folge deinem Herz</h3>
           <p>Richte dein Leben nach deinen Werten und Zielen aus, um erfüllt zu leben.</p>
@@ -274,7 +238,7 @@ export default {
           <li>Klare Ziele: Setze klare Ziele, die du wirklich erreichen möchtest.</li>
           <li>Umsetzungsstrategien: Entwickle Wege, um diese Ziele zu erreichen.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 4") {
+        } else if (this.selectedTip === "Schaffe Klarheit") {
           tippsContainer.innerHTML = `
           <h3>Schaffe Klarheit</h3>
           <p>Beseitige Unklarheiten und fokussiere deine Gedanken auf klare Ziele.</p>
@@ -285,7 +249,7 @@ export default {
           <li>Handlungsoptionen: Betrachte verschiedene Handlungsoptionen.</li>
           <li>Gewissheiten erkennen: Identifiziere, was du sicher weißt.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 5") {
+        } else if (this.selectedTip === "Positiver Ausblick") {
           tippsContainer.innerHTML = `
           <h3>Positiver Ausblick</h3>
           <p>Gestalte deine Einstellung bewusst, um positiver auf Herausforderungen zu reagieren.</p>
@@ -295,7 +259,7 @@ export default {
           <li>Werte in Situationen: Kläre, was dir in diesen Momenten wichtig ist.</li>
           <li>Entscheidung für Glück: Entscheide dich bewusst für ein glücklicheres Verhalten.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 6") {
+        } else if (this.selectedTip === "Neue Perspektiven") {
           tippsContainer.innerHTML = `
           <h3>Neue Perspektiven</h3>
           <p>Betrachte Probleme oder Herausforderungen aus neuen Blickwinkeln, um frische Lösungsansätze zu finden.</p>
@@ -305,7 +269,7 @@ export default {
           <li>Optimales Handeln: Stelle dir vor, wie du handeln würdest, wenn du sorglos und glücklich wärst.</li>
           <li>Langfristige Erinnerung: Bedenke, wie du dich in sechs Monaten an deine Gedanken erinnern möchtest.</li>
           </ol>`;
-        } else if (this.selectedTip === "Tipp 7") {
+        } else if (this.selectedTip === "Entscheidungen treffen") {
           tippsContainer.innerHTML = `
           <h3>Entscheidungen treffen</h3>
           <p>Analysiere deine Optionen und triff kluge Entscheidungen im Einklang mit deinen Zielen.</p>
@@ -322,25 +286,24 @@ export default {
         // Hole das Container-Element für die Tipps
         
         // Funktion, die Tipps basierend auf der Auswahl zurückgibt
-        if (selectedTip === "Tipp 1") {
-          return `
-          <h3>Motivation finden</h3>
-          <p>Entdecke deine tiefsten Antriebe und Ziele, um eine nachhaltige Motivation zu schaffen.</p>
-          <ol>
-          <li>Motivationsbedarf: Identifiziere, wofür du Motivation benötigst.</li>
-          <li>Warum es wichtig ist: Analysiere, warum dies für dich von wirklicher Bedeutung ist.</li>
-          <li>Unterstützung für Ziele: Bestimme, welche Ressourcen du benötigst, um dein Ziel zu verfolgen.</li>
-          <li>Handlungsschritte: Entwickle konkrete Schritte, um dein Ziel zu erreichen.</li>
-          </ol>`;
-        } else if (selectedTip === "Tipp 2") {
-          return "Hier sind Tipps für Tipp 2.";
-        } else if (selectedTip === "Tipp 3") {
-          return "Hier sind Tipps für Tipp 3.";
+        if (selectedTip === "Motivation finden") {
+          return "Motivation finden";
+        } else if (selectedTip === "Prioritäten setzen") {
+          return "Prioritäten setzen";
+        } else if (selectedTip === "Folge deinem Herz") {
+          return "Folge deinem Herz";
+        } else if (selectedTip === "Schaffe Klarheit") {
+          return "Schaffe Klarheit";
+        } else if (selectedTip === "Positiver Ausblick") {
+          return "Positiver Ausblick";
+        } else if (selectedTip === "Neue Perspektiven") {
+          return "Neue Perspektiven";
+        } else if (selectedTip === "Entscheidungen treffen") {
+          return "Entscheidungen treffen";
         }
         // Weitere Bedingungen für andere Tipps hinzufügen
         return ""; // Rückgabe eines leeren Strings, wenn keine Übereinstimmung gefunden wurde
         },
-        
       },
   };
 
@@ -353,14 +316,14 @@ body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #494448;
     }
 
     #app {
       max-width: 600px;
       margin: 20px auto;
       padding: 20px;
-      background-color: #fff;
+      background-color: #494448;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
     }
@@ -370,7 +333,7 @@ body {
       width: 100%;
       height: 15px;
       border-radius: 5px;  
-      background: #d3d3d3;
+      background: #f4f4f4;
       outline: none;
       opacity: 0.7;
       -webkit-transition: .2s;
@@ -383,7 +346,7 @@ body {
       width: 25px;
       height: 25px;
       border-radius: 50%; 
-      background: #04AA6D;
+      background: #85A0A9;
       cursor: pointer;
     }
 
@@ -391,12 +354,12 @@ body {
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      background: #04AA6D;
+      background: #85A0A9;
       cursor: pointer;
     }
 
     h1 {
-      color: #333;
+      color: #f4f4f4;
     }
 
     ul {
@@ -410,8 +373,9 @@ body {
       align-items: center; /* Zentrierte vertikale Ausrichtung der Inhalte */
       margin-bottom: 10px;
       padding: 10px;
-      background-color: #f9f9f9;
       border-radius: 5px;
+      border: #aaa;
+      border-style: solid;
       position: relative;
     }
 
@@ -419,8 +383,8 @@ body {
       margin-left: 10px;
       cursor: pointer;
       padding: 5px 10px;
-      background-color: #3498db;
-      color: #fff;
+      background-color: #85A0A9; /* #3498db; */
+      color: #f4f4f4;
       border: none;
       border-radius: 5px;
     }
@@ -439,8 +403,12 @@ body {
 
     button.delete {
       color: #e74c3c; 
-      background-color: #f9f9f9;
+      background-color: #f4f4f4;
       font-weight: bold;
+    }
+
+    button.newEntry {
+      background-color: #85A0A9;
     }
 
     
@@ -465,11 +433,21 @@ body {
       margin-bottom: 10px;
       width: 100%;
       box-sizing: border-box;
+      background-color: #494448;
+      color: #f4f4f4;
+    }
+
+    option {
+      color: #f4f4f4;
+    }
+
+    .tips {
+      color: #f4f4f4;
     }
 
     button[type="submit"] {
-      background-color: #2ecc71;
-      color: #fff;
+      background-color: #85A0A9;
+      color: #f4f4f4;
       border: none;
       padding: 10px;
       cursor: pointer;
@@ -478,93 +456,74 @@ body {
     }
 
     button[type="submit"]:hover {
-      background-color: #27ae60;
+      background-color: #3498db;
     }
 
     textarea {
       height: 80px; /* Höhe des Textfelds erhöhen */
       resize: none; /* Vertikales Resize aktivieren */
-      border: #333;
+      border: #494448;
+      background-color: #494448;
       padding: 5%;
       margin: 5%;
+      color: #f4f4f4;
+
     }
 
     /* Default-Wert für das Textfeld */
     textarea::placeholder {
-      color: #aaa;
+      color: #f4f4f4;
       font-style: italic;
+    }
+
+    #tipps-container {
+      color: #f4f4f4;
     }
 
 
 
 
-
-/* Float four columns side by side */
-.column {
-  float: center;
-  width: 100%;
-  padding: 0 5px;
+p {
+  color: #f4f4f4;
 }
 
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-/* Style the info cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  margin: 5px;
-  text-align: center;
-  background-color: #444;
-  color: white;
-  border-radius: 5px;
-  
-}
-
-.stats {font-size:50px;}
-
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
+label {
+  color: #f4f4f4;
+  margin-top: 10%;
 }
 
 .flex-container {
     display: flex;
-    background-color: gainsboro;
+    margin: 5%;
+    border-radius: 5px;
+    border: #f4f4f4;
+    border-style: solid;
     text-align: center;
 }
 
 .flex-child {
-    color: #04AA6D;
+    color: #f4f4f4;
 }  
 
 .flex-child:first-child {
-    color: red;
+    color: #f4f4f4;
 } 
+
+button.newEntry {
+  background-color: #2ecc71;
+  font-weight: bold;
+}
+
+button.newEntry:hover {
+  background-color: #27ae60;
+}
+
+h3.stat1 {
+  text-decoration: underline;
+  color: red;
+}
+
+h3.stat2 {
+  color: green;
+}
 </style>
