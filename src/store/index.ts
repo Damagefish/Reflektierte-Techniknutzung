@@ -13,6 +13,9 @@ export default new Vuex.Store({
         meilensteinInput: "",
         calendarFirstEnter: true,
         eventsArr:[],
+        year:"",
+        month:"", 
+
     },
     getters:{
         getName(state){
@@ -75,7 +78,13 @@ export default new Vuex.Store({
           },
         toggleFirstEnterCalendar(state){
             state.calendarFirstEnter = !state.calendarFirstEnter;
-        }
+        },
+        setYear(state, year) {
+            state.year = year;
+          },
+          setMonth(state, month) {
+            state.month = month;
+          },
     }
 
 

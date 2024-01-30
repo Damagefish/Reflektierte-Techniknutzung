@@ -12,11 +12,12 @@
           <p>{{ getIstZustandFromStore }}</p>
           <h1>EVENTS</h1>
           <div v-for="(event, index) in getEventsArrFromStore" :key="index" class="store-data">
-            <h2>Day {{ event.day }}</h2>
+            <h2> {{ event.day }}. {{ event.month }}. {{ event.year }}</h2>
             <div v-for="(eventDetail, detailIndex) in event.events" :key="detailIndex">
               <p>{{ eventDetail.title }}</p>
               <p>{{ eventDetail.time }}</p>
-              <p>{{ eventDetail.anotherInput }}</p>
+              <p :style="{ backgroundColor: eventDetail.anotherInputBackgroundColor }">{{ eventDetail.anotherInput }}</p>
+  
             </div>
           </div>
         </div>
@@ -54,6 +55,9 @@ export default {
     handleClick() {
       this.showIstZustand = !this.showIstZustand;
       this.showAdditionalInfo = true;
+    },
+    setAnotherInputBackgroundColor() {
+      this.$set(this.eventDetail, 'anotherInputBackgroundColor', 'white');
     },
   },
 };
