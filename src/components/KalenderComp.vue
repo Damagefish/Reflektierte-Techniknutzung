@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <div class="main-container"> 
-
+      <HeaderComp v-if = "siteNotEntered"/>
         <div class="left">
         <div class="calendar">
           <div class="month">
@@ -34,7 +34,9 @@
         <div class="today-date">
           <div class="event-day"></div>
           <div class="event-date"></div>
-          <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "$router.push('/MainScreen')"/>
+          <div v-if = "siteNotEntered">
+          <font-awesome-icon :icon="['fas', 'circle-check']" @click = "$router.push('/MainScreen'); toggleFirstTimeEnter();"/>
+          </div>
         </div>
         <div class="events"></div>
         <button class="add-event">
@@ -84,6 +86,7 @@
 
 
 <script>
+import HeaderComp from '@/components/HeaderComp'
 export default {
   name: 'KalenderComp',
   props: {
@@ -125,6 +128,7 @@ export default {
       aspirationOptions: ["Option 1", "Option 2", "Option 3"], 
       zielInput: '',
       meilensteinInput: '',
+      siteNotEntered: this.$store.getters.getFirstTimeCalendar,
 
       today: new Date(),
       activeDay: null,
@@ -136,6 +140,9 @@ export default {
       ],
       eventsArr: []
     };
+  },
+  components:{
+    HeaderComp
   },
   methods: {
     initCalendar() {
@@ -506,6 +513,9 @@ getActiveDay(date) {
 
       this.$store.commit('setAspiration', aspiration);
       this.showDropdown = false; 
+    }, 
+    toggleFirstTimeEnter(){
+      this.$store.commit('toggleFirstEnterCalendar');
     }
     
   },
