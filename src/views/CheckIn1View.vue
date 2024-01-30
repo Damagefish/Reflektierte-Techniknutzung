@@ -403,7 +403,7 @@ body {
 
     button.delete {
       color: #e74c3c; 
-      background-color: #f4f4f4;
+      background-color: #494448;
       font-weight: bold;
     }
 
@@ -519,11 +519,10 @@ button.newEntry:hover {
 }
 
 h3.stat1 {
-  text-decoration: underline;
-  color: red;
+  color: #e74c3c;
 }
 
 h3.stat2 {
-  color: green;
+  color: #27ae60;
 }
 </style>
