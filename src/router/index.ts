@@ -54,13 +54,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'CheckIn1View',
     component: CheckIn1View 
   },
-
-  {
-    path: '/CheckIn2View', 
-    name: 'CheckIn2View',
-    component: CheckIn2View
-  },
-
+  
   {
     path: '/BackgroundView',
     name: 'BackgroundView',
