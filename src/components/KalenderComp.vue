@@ -3,6 +3,9 @@
     <div class="container">
       <div class="main-container"> 
       <HeaderComp v-if = "siteNotEntered"/>
+      <div>
+        <h4>Wähle im Kalender Meilensteine aus, die du erreichen willst</h4>
+      </div>
         <div class="left">
         <div class="calendar">
           <div class="month">
@@ -34,8 +37,6 @@
         <div class="today-date">
           <div class="event-day"></div>
           <div class="event-date"></div>
-          <div v-if = "siteNotEntered">
-          </div>
         </div>
         <div class="events"></div>
         <button class="add-event">
@@ -972,6 +973,9 @@ getActiveDay(date) {
     }
     .header{
       margin-bottom: 15px;
+    }
+    h4{
+      color: #f4f4f4;
     }
   }
 </style>
