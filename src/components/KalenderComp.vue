@@ -25,7 +25,7 @@
               <input type="text" placeholder="dd/mm/yyyy" class="date-input" />
               <button class="goto-btn">Go</button>
             </div>
-            <button class="today-btn">Today</button>
+            <button class="today-btn">Heute</button>
           </div>
 
         </div>
