@@ -94,13 +94,12 @@
         <button type="submit">Eintrag speichern</button>
       </form>
     </div>
-    <Footer>
+  </div>
+  <Footer>
       <FooterSection>Teil 1</FooterSection>
       <FooterSection>Teil 2</FooterSection>
       <FooterSection>Teil 3</FooterSection>
     </Footer>
-  </div>
-  
 </template>
 
 <script>
@@ -539,5 +538,9 @@ h3.stat1 {
 
 h3.stat2 {
   color: #27ae60;
+}
+
+.footer{
+  margin-top: 495px;
 }
 </style>
