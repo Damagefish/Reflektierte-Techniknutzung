@@ -296,14 +296,14 @@ documentClick(e) {
 
 gotoDate() {
   const dateArr = this.dateInput.value.split("/");
-
+  
   if (dateArr.length === 3) {
-    const month = parseInt(dateArr[0], 10);
-    const day = parseInt(dateArr[1], 10);
+    const day = parseInt(dateArr[0], 10);
+    const month = parseInt(dateArr[1], 10);
     const year = parseInt(dateArr[2], 10);
 
-    if (!isNaN(month) && !isNaN(day) && !isNaN(year) &&
-        month > 0 && month <= 12 && day > 0 && day <= 31) {
+    if (!isNaN(day) && !isNaN(month) && !isNaN(year) &&
+        day > 0 && day <= 31 && month > 0 && month <= 12) {
       this.month = month - 1;
       this.year = year;
       this.initCalendar();
