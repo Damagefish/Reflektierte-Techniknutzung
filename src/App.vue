@@ -19,7 +19,7 @@ export default {
 
 <style>
 *{
-  background-color: #494448;
+  background-color: #403B3E;
 }
 #app {
   font-family: "Roboto";
