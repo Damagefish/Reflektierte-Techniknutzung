@@ -4,7 +4,7 @@
       class="circle"
       ref="circle1"
       @click="navigateTo('/')"
-      :class = "{'highlighted': checkRoute('NamensEingabeView') || checkHighlightFirst()}"
+      :class = "{'highlighted': isSameRoute('NamensEingabeView') || checkHighlightFirst(), 'current': isSameRoute('NamensEingabeView')}"
     >
     </div>
     <div class="connector" id = "connector1" :class = "{'highlighted': checkHighlightFirst()}"></div>
@@ -12,7 +12,7 @@
       class="circle"
       ref="circle2"
       @click="navigateTo('LebensBereicheView')"
-      :class = "{'highlighted': checkHighlightFirst()}"
+      :class = "{'highlighted': checkHighlightFirst(), 'current': isSameRoute('LebensBereicheView')}"
     >
     
     </div>
@@ -22,7 +22,7 @@
   class="circle"
   ref="circle3"
   @click="navigateTo('/AspirationwahlView')"
-  :class = "{'highlighted': checkHighlightSecond()}"
+  :class = "{'highlighted': checkHighlightSecond(), 'current': isSameRoute('AspirationsWahlView')}"
 >
   
 </div>
@@ -31,7 +31,7 @@
       class="circle"
       ref="circle4"
       @click="navigateTo('meilensteine-waehlen')"
-      :class = "{'highlighted': checkHighlightThird()}"
+      :class = "{'highlighted': checkHighlightThird(), 'current': isSameRoute('meilensteine-waehlen')}"
     >
     </div>
   </div>
@@ -43,7 +43,7 @@ export default {
     navigateTo(route) {
   this.$router.push({ path: route });
     },
-    checkRoute(route){
+    isSameRoute(route){
       return this.$route.name == route;
     },
     checkHighlightFirst(){
@@ -73,8 +73,25 @@ export default {
   justify-content: center;
 }
 .circle.highlighted{
-    background-color: #85A0A9;
+    background-color: #1B789D;
   }
+
+.circle.current{
+  background-color: #87CEEB;
+}
+
+.connector.highlighted{
+  background-color:#87CEEB
+}
+
+.connector {
+  position: relative;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 2px;
+  background-color: #f4f4f4;
+}
 
 @media(max-width: 499px){
   .circle {
@@ -87,17 +104,6 @@ export default {
   align-items: center;
   justify-content: center;
   }
-  .connector {
-  position: relative;
-  left: 30px;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 2px;
-  background-color: black;
-}
-.connector.highlighted{
-  background-color:#85A0A9
-}
 }
 
 
@@ -112,15 +118,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-  .connector {
-  position: relative;
-  left: 30px;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 2px;
-  background-color: black;
 }
 
 }
