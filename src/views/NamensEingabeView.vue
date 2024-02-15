@@ -40,12 +40,12 @@
   </script>
   
   <style scoped>
-  @media (max-width: 1280px){
+  @media (max-width: 619px){
     
-    :root {
-      --input-border: #776661;
-}
     #arrowRight{
+      position: absolute;
+      right: 20px;
+      bottom: 65px;
       margin-left: 258px;
       height: 45px;
       color: #f4f4f4
@@ -59,7 +59,6 @@
       font-family: inherit;
       padding: 0.25em 0.5em;
       background-color: #f4f4f4;
-      border: 2px solid var(--input-border);
       border-radius: 4px;
       margin-top: 116px;
       width: 215px;
@@ -83,7 +82,8 @@
       color: black;
     }
   }
-  @media(min-width: 1281px){
+  
+  @media(min-width: 620px){
   h4{
     color: #f4f4f4;
   }
@@ -91,13 +91,17 @@
     background-color: #f4f4f4;
   }
   input{
+    margin-top: 10px;
     text-align: center;
-    width: 300px;
-
+    width: 250px;
+  }
+  .textbox{
+    margin-top: 50px;
   }
   #arrowRight{
-    justify-content: right;
-    align-items: end;
+    position: absolute;
+    right: 162px;
+    bottom: 295px;
     color: white;
   }
  
@@ -113,7 +117,7 @@
   }
 
   .textbox {
-    margin-top: 10px; /* Adjust as needed for iPhone SE */
+    margin-top: 30px; /* Adjust as needed for iPhone SE */
   }
   #arrowContainer{
       margin-top: -20px;
@@ -123,5 +127,6 @@
       margin-bottom: 10px;
     }
 }
+
   </style>
   

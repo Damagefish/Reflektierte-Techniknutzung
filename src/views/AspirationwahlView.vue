@@ -83,6 +83,9 @@
 @media (min-width: 620px) and (max-width: 1280px){ /**Tablet Ansicht */
 
 #arrowRight{
+    position: absolute;
+    right: 162px;
+    bottom: 295px;
     margin-left: 382px;
     margin-top: 48px;
     height: 45px;
@@ -150,6 +153,9 @@ input {
     margin-top: 10px;
   }
 #arrowRight{
+    position: absolute;
+    right: 20px;
+    bottom: 65px;
     margin-left: 253px;
     margin-top: 208px;
     height: 45px;

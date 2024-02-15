@@ -54,9 +54,12 @@ export default {
 
 <style scoped>
 
-@media (min-width: 620px) and (max-width: 1280px){
+@media (min-width: 620px){ /*Tablet Ansicht*/
 
   #arrowRight{
+      position: absolute;
+      right: 162px;
+      bottom: 295px;
       margin-left: 382px;
       margin-top: 48px;
       height: 45px;
@@ -78,8 +81,6 @@ export default {
       font-family: inherit;
       padding: 0.25em 0.5em;
       background-color: #f4f4f4;
-      border: 2px solid var(--input-border);
-      border-radius: 4px;
       width: 188px;
       height: 30px;
       margin-right: 10px;
@@ -92,7 +93,7 @@ export default {
     }
     
 }
-@media (max-width: 619px){
+@media (max-width: 619px){ /*Smartphone Ansicht*/
 
   input {
       font-size: 16px;
@@ -100,9 +101,7 @@ export default {
       font-family: inherit;
       padding: 0.25em 0.5em;
       background-color: #f4f4f4;
-      border: 2px solid var(--input-border);
-      border-radius: 4px;
-      width: 190px;
+      width: 180px;
       height: 20px;
       margin-right: 10px;
       margin-top: 1px;
@@ -114,11 +113,15 @@ export default {
   .input-wrapper{
       display:flex;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-top: 10px;
     }
   #arrowRight{
+      position: absolute;
+      right: 20px;
+      bottom: 65px;
       margin-left: 182px;
+      margin-top: 40px;
       height: 45px;
       color: #f4f4f4;
     }
