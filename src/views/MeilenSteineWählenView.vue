@@ -2,13 +2,13 @@
   <div>
     
     <KalenderComp/>
-   
-  </div>
-  <Footer>
+    <Footer v-if="!$store.state.calendarFirstEnter">
       <FooterSection>Teil 1</FooterSection>
       <FooterSection>Teil 2</FooterSection>
       <FooterSection>Teil 3</FooterSection>
     </Footer>
+  </div>
+  
 </template>
 
 <script>
@@ -20,6 +20,8 @@ export default {
   name: 'MeilenSteineWählenView',
   components: {
     KalenderComp,
+    Footer,
+    FooterSection,
   },
 data() {
   return {
