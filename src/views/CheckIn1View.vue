@@ -138,23 +138,24 @@ export default {
           
         },
         mostCommonDisturbance() {
-          if (this.entries.length === 0) {
-            return "";
-          }
+  if (this.entries.length === 0) {
+    return "";
+  }
 
-          const disturbancesCount = {};
-          this.entries.forEach(entry => {
-            entry.disturbances.forEach(disturbance => {
-              disturbancesCount[disturbance] = disturbancesCount[disturbance] + 1 || 1;
-            });
-          });
+  const disturbancesCount = {};
+  this.entries.forEach(entry => {
+    entry.disturbances.forEach(disturbance => {
+      disturbancesCount[disturbance] = disturbancesCount[disturbance] + 1 || 1;
+    });
+  });
 
-          const mostCommon = Object.keys(disturbancesCount).reduce((a, b) =>
-            disturbancesCount[a] > disturbancesCount[b] ? a : b
-          );
+  const mostCommon = Object.keys(disturbancesCount).reduce((a, b) =>
+    disturbancesCount[a] > disturbancesCount[b] ? a : b,
+    '' 
+  );
 
-          return mostCommon;
-        },
+  return mostCommon;
+},
         mostCommonTip() {
           if (this.entries.length === 0) {
             return "";
