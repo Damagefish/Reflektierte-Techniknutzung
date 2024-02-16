@@ -10,7 +10,7 @@
             <i>Was macht dich glücklich?</i>
             <div style="page-break-after: always;"></div>
             <i>Was möchtest du erreichen?</i>
-        <LebensbereicheComp ref ="Lebensbereiche"/>
+        <LebensbereicheComp/>
         </div>
 </template>
 
