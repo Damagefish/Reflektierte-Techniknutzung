@@ -140,7 +140,7 @@ input {
     width: 190px;
     height: 20px;
     margin-right: 10px;
-    margin-top: 1px;
+    margin-top: 5px;
 }
 #circlePlus{
   height: 30px;
@@ -173,6 +173,10 @@ input {
 #IstZustand{
     margin-top: 15px;
 }
+#ist-textfield{
+  margin-right: 17px;
+}
+
 }
 .lebensbereiche-comp {
     width: 50%;

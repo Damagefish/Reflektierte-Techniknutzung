@@ -4,7 +4,7 @@
       <div class="main-container"> 
       <HeaderComp v-if = "siteNotEntered"/>
       <div>
-        <h4>Wähle im Kalender Meilensteine aus, die du erreichen willst</h4>
+        <h4>Trage im Kalender Meilensteine ein, die du erreichen willst</h4>
       </div>
         <div class="left">
         <div class="calendar">
@@ -136,8 +136,8 @@ export default {
       month: new Date().getMonth(),
       year: new Date().getFullYear(),
       months: [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"
       ],
       eventsArr: []
     };
@@ -587,6 +587,17 @@ getActiveDay(date) {
     margin-top: 20px;
   }
 
+  .goto-today {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .today-btn {
+    margin-left: 10px; /* Adjust as needed */
+    padding: 12px 16px 14px 16px; 
+  }
+
   @media (max-width: 600px) {
     .main-container {
       flex-direction: column;
@@ -603,6 +614,7 @@ getActiveDay(date) {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    color: #f4f4f4
   }
 
   .date {
@@ -614,6 +626,7 @@ getActiveDay(date) {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    color: #f4f4f4;
   }
 
   .weekdays div {
@@ -633,6 +646,7 @@ getActiveDay(date) {
 ::v-deep .day {
   text-align: center;
   padding: 10px;
+  color: #f4f4f4;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
@@ -640,24 +654,25 @@ getActiveDay(date) {
 }
 
 ::v-deep .day.prev-date {
-  color: #999;
+  color: #a3a3a3;
 }
 
 ::v-deep .day.next-date {
-  color: #999;
+  color: #a3a3a3;
 }
 
 ::v-deep .day.today {
-  background-color: #f0f8ff;
+  background-color: #a3a3a3;
+  color: #403b3e;
 }
 
 ::v-deep .day.active {
-  background-color: #87ceeb;
-  color: #fff;
+  background-color: #1B789D;
+  color: #f4f4f4;
 }
 
 ::v-deep .day:hover {
-  background-color: #87ceeb;
+  background-color: #1B789D;
   color: #fff;
 }
   .goto-today {
@@ -679,17 +694,16 @@ getActiveDay(date) {
 
   .goto-btn {
     padding: 8px 16px;
-    background-color: #87ceeb;
-    color: #fff;
+    background-color: #1B789D;
+    color: #f4f4f4;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
 
   .today-btn {
-    padding: 8px 16px;
-    background-color: #87ceeb;
-    color: #fff;
+    background-color: #1B789D;
+    color: #f4f4f4;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -741,7 +755,7 @@ getActiveDay(date) {
   }
 
   .title{
-    background-color: #516795;
+    background-color: #1B789D;
     color: white;
   }
 
@@ -751,7 +765,7 @@ getActiveDay(date) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #516795;
+    background-color: #1B789D;
     border: 1px solid #000000;
     border-radius: 8px;
     padding: 20px;
@@ -763,6 +777,7 @@ getActiveDay(date) {
   }
 
   .add-event-header {
+    background-color: #1B789D;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -771,7 +786,7 @@ getActiveDay(date) {
 
   .add-event-body {
     margin-bottom: 20px;
-    background-color: #516795;
+    background-color: #1B789D;
   }
 
   .add-event-input {
@@ -788,13 +803,13 @@ getActiveDay(date) {
 
   .add-event-footer {
     text-align: right;
-    background-color: #516795;
+    background-color: #1B789D;
   }
 
   .add-event-btn {
     padding: 8px 16px;
     background-color: #87ceeb;
-    color: #fff;
+    color: #403b3e;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -804,7 +819,7 @@ getActiveDay(date) {
     position: relative;
     width: 60px;
     height: 60px;
-    background-color: #87ceeb;
+    background-color: #1B789D;
     color: #fff;
     border: none;
     border-radius: 8px; 
@@ -846,7 +861,7 @@ getActiveDay(date) {
   padding: 20px;
 }
 .store-data {
-    border: 2px solid #87ceeb; 
+    border: 2px solid #1B789D; 
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;
@@ -886,12 +901,6 @@ getActiveDay(date) {
       padding: 8px;
     }
 
-    .goto-today {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-
   .goto {
     display: flex;
     margin-bottom: 10px;
@@ -907,7 +916,7 @@ getActiveDay(date) {
 
   .goto-btn{
   padding: 12px 16px 14px 16px; 
-  background-color: #87ceeb;
+  background-color: #1B789D;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -915,18 +924,13 @@ getActiveDay(date) {
 }
   .today-btn {
   padding: 12px 16px 14px 16px; 
-  background-color: #87ceeb;
+  background-color: #1B789D;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-bottom: 8px;
 }
-
-  .today-btn {
-    margin-left: 10px; /* Adjust as needed */
-  }
-
     .event-day {
       font-size: 18px;
     }
