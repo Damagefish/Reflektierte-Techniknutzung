@@ -53,22 +53,23 @@
              
       
             <div class="add-event-body">
-            <div class="add-event-input">
-            <input type="text" placeholder="Meilenstein Name" class="event-name" v-model="meilensteinInput"/>
-           </div>
 
-             <div class="add-event-input">
-             <input type="text" placeholder="Startzeit" class="event-time-from" />
-              </div>
 
-               <div class="add-event-input">
-              <input type="text" placeholder="Abschlusszeit" class="event-time-to" />
-              </div>
+           <div class="add-event-input">
+           <input type="text" placeholder="Meilenstein Name" class="event-name" v-model="meilensteinInput" ref="eventTitleInput" />
+            </div>
 
-              
-                 <div class="add-event-input">
-                 <input type="text" placeholder="Ziel zum erreichen des Meilensteins" class="another-input" v-model="zielInput" />
-                    </div>
+          <div class="add-event-input">
+           <input type="text" placeholder="Startzeit" class="event-time-from" ref="eventFromInput" />
+          </div>
+
+          <div class="add-event-input">
+         <input type="text" placeholder="Abschlusszeit" class="event-time-to" ref="eventToInput" />
+          </div>
+
+<div class="add-event-input">
+  <input type="text" placeholder="Ziel zum erreichen des Meilensteins" class="another-input" v-model="zielInput" ref="zielInput" />
+</div>
                       </div>
                      <div class="add-event-footer">
                       <button @click="updateStoreValues" class="add-event-btn">Add Event</button>
@@ -322,12 +323,20 @@ documentClickHandler(e) {
     },
 
     addEventSubmitHandler() {
-  const title = this.addEventTitle.value.trim();
-  const from = this.addEventFrom.value.trim();
-  const to = this.addEventTo.value.trim();
-  const anotherInput = this.addEventAnotherInput.value.trim();
+   
+  const addEventTitle = this.$refs.eventTitleInput;
+  const addEventFrom = this.$refs.eventFromInput;
+  const addEventTo = this.$refs.eventToInput;
+  const addEventAnotherInput = this.$refs.zielInput;
 
  
+  const title = addEventTitle ? addEventTitle.value.trim() : '';
+  const from = addEventFrom ? addEventFrom.value.trim() : '';
+  const to = addEventTo ? addEventTo.value.trim() : '';
+  const anotherInput = addEventAnotherInput ? addEventAnotherInput.value.trim() : '';
+
+  
+  this.zielInput = '';
 
   const eventObj = {
     day: this.activeDay,
@@ -521,6 +530,12 @@ getActiveDay(date) {
     
   },
   mounted() {
+
+    console.log('addEventTitle:', this.addEventTitle);
+    console.log('addEventFrom:', this.addEventFrom);
+    console.log('addEventTo:', this.addEventTo);
+    console.log('addEventAnotherInput:', this.addEventAnotherInput);
+
   this.calendar = document.querySelector(".calendar");
   this.date = document.querySelector(".date");
   this.daysContainer = document.querySelector(".days");
