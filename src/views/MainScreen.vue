@@ -16,7 +16,7 @@
           <h4>Meilensteine</h4>
           <div v-for="(event, index) in getEventsArrFromStore" :key="index" class="store-data">
             <h4> {{ event.day }}. {{ event.month }}. {{ event.year }}</h4>
-            <div v-for="(eventDetail, detailIndex) in event.events" :key="detailIndex">
+            <div v-for="(eventDetail, detailIndex) in event.events" :key="detailIndex" class="infos">
               <p>{{ eventDetail.title }}</p>
               <p>{{ eventDetail.time }}</p>
               <p :style="{ backgroundColor: eventDetail.anotherInputBackgroundColor }">{{ eventDetail.anotherInput }}</p>
@@ -106,16 +106,27 @@ export default {
   border-radius: 8px;
   margin-bottom: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #87ceeb; /* Blauer Border */
 }
 
 .additional-info-container {
-  background-color: white;
+  background-color: #403B3E;
   padding: 10px;
+}
+
+.infos {
+  background-color: #f3f5f8; /* Gewünschte Hintergrundfarbe */
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #87ceeb; /* Blauer Border */
 }
 
 .frame {
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #87ceeb; /* Blauer Border */
   border-radius: 15px;
 }
 
