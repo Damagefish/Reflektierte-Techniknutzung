@@ -1,7 +1,18 @@
-import Vuex from 'vuex'
+import Vuex, { Store } from 'vuex';
 
+const localStoragePlugin = (store: Store<any>) => {
+    if (localStorage.getItem('vuex_state')) {
+        const storedState = JSON.parse(localStorage.getItem('vuex_state') || '');
+        store.replaceState(storedState);
+    }
+
+    store.subscribe((mutation, state) => {
+        localStorage.setItem('vuex_state', JSON.stringify(state));
+    });
+};
 
 export default new Vuex.Store({
+    plugins: [localStoragePlugin],
 
     state:{
         name: "", //gewählter Name des Users
