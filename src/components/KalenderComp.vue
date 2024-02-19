@@ -861,6 +861,11 @@ getActiveDay(date) {
     content: "✚"; 
   }
 
+  #checkIcon{
+      margin-top: 15px;
+      height: 45px;
+      color: #f4f4f4;
+    }
   .middle {
   flex: 1;
   margin: 0 20px;
