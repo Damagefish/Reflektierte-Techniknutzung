@@ -190,18 +190,19 @@ input {
   margin-bottom: 10px;
   border: 1px solid #f4f4f4;
   border-radius: 8px;
-  background-color: #928471;
+  background-color: #A3A3A3;
+  color: #403b3e;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
   
     .tag:hover {
-    background-color: #c0c0c0;
+      background-color: #3F95B7;
+      color: #fff;
     }
   
     .tag.selected {
-    background-color: #85A0A9;
-    color: #fff;
-    box-shadow: inset 5px 5px 10px #5A6C9B, inset -5px -5px 10px #687DA0;
+      background-color: #1B789D;
+      color: #fff;
     }
     </style>
