@@ -12,12 +12,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'FooterComp',
-};
-</script>
-
 <style scoped>
 .footer {
   display: flex;
@@ -27,7 +21,8 @@ export default {
   color: white;
   padding: 10px;
   border: 2px solid #555; 
-  border-radius: 8px; 
+  border-radius: 8px;
+  margin-top: 10px; 
 }
 
 .footer-section {

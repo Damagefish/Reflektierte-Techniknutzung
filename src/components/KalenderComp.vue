@@ -584,11 +584,13 @@ getActiveDay(date) {
   #app {
     font-family: 'Arial', sans-serif;
     color: #a39494;
+    height: 90vh;
   }
 
   .container {
     display: flex;
     flex-direction: column;
+  
   }
 
   .main-container {
@@ -877,10 +879,11 @@ getActiveDay(date) {
 }
 .right {
   flex: 1;
-  margin: 0 20px;
+  margin: 20px 20px;
   border: 2px solid #ddd; 
   border-radius: 8px;
   padding: 20px;
+  height: 90vh;
 }
 .store-data {
     border: 2px solid #1B789D; 

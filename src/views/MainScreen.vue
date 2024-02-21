@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+  <div class="spacer"></div>
   <Footer>
     <FooterSection>Teil 1</FooterSection>
     <FooterSection>Teil 2</FooterSection>
@@ -181,4 +182,6 @@ h4 {
   border-radius: 16px;
   padding-top: 10px;
 }
+
+
 </style>
