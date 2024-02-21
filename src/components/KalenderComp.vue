@@ -584,7 +584,7 @@ getActiveDay(date) {
   #app {
     font-family: 'Arial', sans-serif;
     color: #a39494;
-    height: 90vh;
+    height: 89vh;
   }
 
   .container {
