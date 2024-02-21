@@ -150,7 +150,7 @@ export default {
 }
 
 .infos p[data-v-4da0aabf] {
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
 }
 
 .frame {

@@ -31,5 +31,17 @@ data() {
 </script>
 
 <style scoped>
-
+   .footer {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: 2px solid #555; 
+  border-radius: 8px;
+  margin-top: 10px; 
+  position: fixed;
+  width: 92.5%;
+  }
 </style>
