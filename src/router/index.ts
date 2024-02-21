@@ -83,19 +83,25 @@ const router = createRouter({
   routes
 });
 
+let previousScreen: string | null = null; 
+
 router.beforeEach((to, from, next) => {
   const currentScreen = store.state.currentScreen;
 
-  if (currentScreen === 'NamensEingabeView' && to.name !== 'NamensEingabeView') {
-    next({ name: 'NamensEingabeView' }); 
-  }
-  else if (currentScreen === 'MainScreen' && to.name !== 'MainScreen') {
-    next({ name: 'MainScreen' }); 
-  }
-  else {
-    next();
+  
+  if (currentScreen !== previousScreen) {
+    previousScreen = currentScreen; 
+
+    if (currentScreen === 'NamensEingabeView' && to.name !== 'NamensEingabeView') {
+      next({ name: 'NamensEingabeView' });
+    } else if (currentScreen === 'MainScreen' && to.name !== 'MainScreen') {
+      next({ name: 'MainScreen' });
+    } else {
+      next(); 
+    }
+  } else {
+    next(); 
   }
 });
 
-
-export default router
+export default router;
