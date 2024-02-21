@@ -21,7 +21,7 @@
         </div>
       </div>
     
-      <button @click="showNewEntryForm">Neuen Eintrag erstellen</button>
+      <button @click="showNewEntryForm(); toggleShowFooter();">Neuen Eintrag erstellen</button>
       <ul>
         <li v-for="(entry, index) in entries" :key="index">
             {{ entry.content }}
@@ -90,12 +90,12 @@
         <label>Welche Schritte willst du jetzt unternehmen?</label>
         <textarea v-model="improveText" placeholder="Schreib auf..."></textarea>
 
-        <button @click="cancelNewEntry" class="cancel">Abbrechen</button>
-        <button type="submit">Eintrag speichern</button>
+        <button @click="cancelNewEntry();toggleShowFooter();" class="cancel">Abbrechen</button>
+        <button type="submit" @click = toggleShowFooter();>Eintrag speichern</button>
       </form>
     </div>
   </div>
-  <Footer>
+  <Footer v-if="showFooter">
       <FooterSection>Teil 1</FooterSection>
       <FooterSection>Teil 2</FooterSection>
       <FooterSection>Teil 3</FooterSection>
@@ -124,6 +124,7 @@ export default {
         selectedTip: '',
         highlight: '',
         improveText: '',
+        showFooter: true,
       };
   },
 
@@ -179,6 +180,9 @@ export default {
       methods: {
         showNewEntryForm() {
           this.showNewEntry = true;
+        },
+        toggleShowFooter(){
+          this.showFooter = !this.showFooter;
         },
         cancelNewEntry() {
           this.showNewEntry = false;
