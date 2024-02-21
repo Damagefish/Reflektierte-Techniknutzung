@@ -1,5 +1,20 @@
 import Vuex, { Store } from 'vuex';
 
+interface RootState {
+    name: string;
+    selectedTags: string[];
+    aspirationTags: string[];
+    aspiration: string;
+    istZustand: string;
+    zielInput: string;
+    meilensteinInput: string;
+    calendarFirstEnter: boolean;
+    eventsArr: any[]; // Hier anpassen, falls eventsArr spezifische Typen hat
+    year: string;
+    month: string;
+    currentScreen: string; // Füge diese Zeile hinzu
+}
+
 const localStoragePlugin = (store: Store<any>) => {
     if (localStorage.getItem('vuex_state')) {
         const storedState = JSON.parse(localStorage.getItem('vuex_state') || '');
@@ -26,7 +41,7 @@ export default new Vuex.Store({
         eventsArr:[],
         year:"",
         month:"", 
-
+        currentScreen: 'NamensEingabeView',
     },
     getters:{
         getName(state){
@@ -87,16 +102,22 @@ export default new Vuex.Store({
         setEventsArr(state, eventsArr) {
             state.eventsArr = eventsArr;
           },
-        toggleFirstEnterCalendar(state){
-            state.calendarFirstEnter = !state.calendarFirstEnter;
-        },
+        
         setYear(state, year) {
             state.year = year;
           },
           setMonth(state, month) {
             state.month = month;
           },
+
+          setCalendarFirstEnter(state, value) {
+            state.calendarFirstEnter = value;
+        },
+        toggleFirstTimeEnter(state) {
+            state.calendarFirstEnter = !state.calendarFirstEnter;
+            if (!state.calendarFirstEnter) {
+              state.currentScreen = 'MainScreen';
+            }
+          },
     }
-
-
-})
+});

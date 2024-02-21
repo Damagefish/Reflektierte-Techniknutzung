@@ -1,5 +1,5 @@
-// router/index.ts
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import store from '@/store';
 
 import NamensEingabeView from '../views/NamensEingabeView.vue'
 import LebensBereicheView from '../views/LebensBereicheView.vue';
@@ -10,12 +10,12 @@ import MainScreen from '../views/MainScreen.vue';
 import MeilenSteineWählenView from '../views/MeilenSteineWählenView.vue'; 
 import WochenAblaufView from '../views/WochenAblaufView.vue';
 import CheckIn1View from '../views/CheckIn1View.vue';
-import CheckIn2View from '../views/CheckIn2View.vue';
 
 import BackgroundView from '@/views/BackgroundView.vue'; // Stellen Sie sicher, dass der Pfad korrekt ist
 import KalenderView from '@/views/KalenderView.vue'; // Passe den Pfad entsprechend an
 
 const routes: Array<RouteRecordRaw> = [
+  
   {
     path: '/',
     name: 'NamensEingabeView',
@@ -37,11 +37,13 @@ const routes: Array<RouteRecordRaw> = [
     name: 'barchart',
     component: BarChart 
   },
+
   {
     path: '/mainscreen', 
-    name: 'mainscreen',
+    name: 'MainScreen',
     component: MainScreen 
-  },
+},
+
 
   {
     path: '/WochenAblaufView', 
@@ -79,6 +81,21 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
+
+router.beforeEach((to, from, next) => {
+  const currentScreen = store.state.currentScreen;
+
+  if (currentScreen === 'NamensEingabeView' && to.name !== 'NamensEingabeView') {
+    next({ name: 'NamensEingabeView' }); 
+  }
+  else if (currentScreen === 'MainScreen' && to.name !== 'MainScreen') {
+    next({ name: 'MainScreen' }); 
+  }
+  else {
+    next();
+  }
+});
+
 
 export default router

@@ -526,6 +526,8 @@ getActiveDay(date) {
     }, 
     toggleFirstTimeEnter(){
       this.$store.commit('toggleFirstEnterCalendar');
+      this.$store.commit('setCalendarFirstEnter', 1);
+      this.$store.commit('toggleFirstTimeEnter');
     }
     
   },
