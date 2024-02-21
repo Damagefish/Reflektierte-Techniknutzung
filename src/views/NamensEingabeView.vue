@@ -2,16 +2,22 @@
   <HeaderComp/>
     <div>
         <div class = "textbox">
+          <div v-if="shown"> <!--Button zum Installieren der App-->
+          <button @click="installPWA" class = "install-button">
+            Installieren!
+          </button>
+          </div>
+
           <h2>Willkommen bei Aspire!</h2> 
           <h4>Diese App begleitet dich dabei deinen Aspirationen nachzugehen</h4>
           <h4>Bevor wir beginnen: </h4>
           <h4>Wie willst du in der App genannt werden?</h4>
         </div>  
-        <section>
 
-            
+        <section>
         <input v-model="name" placeholder="Wie willst du genannt werden?" type = "text"/>
         </section>
+
         <div id= "arrowContainer">
         <font-awesome-icon :icon="['fas', 'circle-arrow-right']" @click = "changeName(); $router.push('/LebensbereicheView')" id = "arrowRight"/>
         </div>
@@ -25,22 +31,43 @@
         return {
             name: '',
             isFooterVisible: true,
+            shown: false,
         }
     },
     methods:{
         changeName(){
             this.$store.commit('changeName', this.name);
-        }
+        },
+        dismissPrompt() {
+          this.shown = false
+        },
+        installPWA() {
+          this.installEvent.prompt()
+          this.installEvent.userChoice.then((choice) => {
+          this.dismissPrompt() // Hide the prompt once the user's clicked
+      })
+    },
     }, 
     components:{
       HeaderComp
-    }
-    
+    },
+
+    beforeMount() {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault()
+      this.installEvent = e
+      this.shown = true
+    })
+  },
   }
   </script>
   
   <style scoped>
-  @media (max-width: 619px){
+  .install-button:hover{
+      background-color: #87CEEB;
+      color: #403b3e;
+    }
+  @media (max-width: 500px){
     
     #arrowRight{
       position: absolute;
@@ -71,7 +98,7 @@
       border-radius: 15px;
       margin-bottom: 5px;
       background-color: #f4f4f4;
-      margin-top: 60px;
+      margin-top: 90px;
     }
     h2{
       background-color: #f4f4f4;
@@ -81,52 +108,70 @@
       background-color: #f4f4f4;
       color: black;
     }
+    .install-button{
+      position: absolute;
+      top: 85px;
+      right: 66px;
+      color: #f4f4f4;
+      background-color: #1B789D;
+      border: 1px solid #ddd;
+      width: 100px;
+      height: 45px;
+      border-radius: 15px;
+    }
   }
   
-  @media(min-width: 620px){
+  @media(min-width: 501px){
+
+  h2{
+      background-color: #f4f4f4;
+      color: black;
+    }
   h4{
-    color: #f4f4f4;
-  }
+      background-color: #f4f4f4;
+      color: black;
+    }
   #frame{
     background-color: #f4f4f4;
   }
-  input{
-    margin-top: 10px;
-    text-align: center;
-    width: 250px;
+  input {
+      font-size: 16px;
+      font-size: max(16px, 1em);
+      font-family: inherit;
+      padding: 0.25em 0.5em;
+      background-color: #f4f4f4;
+      border-radius: 4px;
+      margin-top: 116px;
+      width: 215px;
   }
   .textbox{
-    margin-top: 50px;
+    padding: 20px;
+    display: border;
+    justify-content: baseline;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    background-color: #f4f4f4;
+    margin-top: 90px;
   }
+
   #arrowRight{
     position: absolute;
-    right: 162px;
-    bottom: 295px;
+    right: 20px;
+    bottom: 65px;
     color: white;
   }
- 
-  .button{
-    background-color: white;
-  }
+  .install-button{
+      position: absolute;
+      top: 120px;
+      right: 66px;
+      color: #f4f4f4;
+      background-color: #1B789D;
+      border: 1px solid #ddd;
+      width: 100px;
+      height: 45px;
+      border-radius: 15px;
+    } 
 }
-
-@media (max-width: 375px) {
-  /* Specific styles for iPhone SE */
-  input {
-    margin-top: 10px; /* Adjust as needed for iPhone SE */
-  }
-
-  .textbox {
-    margin-top: 30px; /* Adjust as needed for iPhone SE */
-  }
-  #arrowContainer{
-      margin-top: -20px;
-      height: 50%;
-    }
-    section{
-      margin-bottom: 10px;
-    }
-}
-
-  </style>
+ </style>
   
