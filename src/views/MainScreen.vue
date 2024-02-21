@@ -95,7 +95,7 @@ export default {
   position: relative;
   width: 100%;
   max-width: 375px;
-  height: 90vh;
+  height: 89vh;
   border: 1px solid #ccc;
   margin: 0 auto;
   z-index: 1;

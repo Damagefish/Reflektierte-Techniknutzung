@@ -883,7 +883,7 @@ getActiveDay(date) {
   border: 2px solid #ddd; 
   border-radius: 8px;
   padding: 20px;
-  height: 90vh;
+  height: 89vh;
 }
 .store-data {
     border: 2px solid #1B789D; 

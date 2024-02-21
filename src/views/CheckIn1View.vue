@@ -341,7 +341,7 @@ body {
       background-color: #494448;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
-      height: 33vh;
+      height: 82vh;
     }
     
     .slider {
@@ -542,7 +542,4 @@ h3.stat2 {
   color: #27ae60;
 }
 
-.footer{
-  margin-top: 495px;
-}
 </style>
