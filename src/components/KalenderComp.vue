@@ -395,8 +395,8 @@ updateEvents(date) {
   });
 
   if (events === "") {
-    events = `<div class="no-event">
-            <h3>No Events</h3>
+    events = `<div id="no-event">
+            <h3>Keine Meilensteine</h3>
         </div>`;
   }
 
@@ -586,7 +586,9 @@ getActiveDay(date) {
     color: #a39494;
     height: 89vh;
   }
-
+  h3{
+    color: #f4f4f4;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -736,11 +738,12 @@ getActiveDay(date) {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #f4f4f4;
   }
 
   .event-date {
     font-size: 14px;
-    color: #888;
+    color: #f4f4f4;
     margin-bottom: 20px;
   }
 
