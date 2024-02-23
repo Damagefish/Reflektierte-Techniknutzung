@@ -413,7 +413,7 @@ body {
       margin-left: 10px;
       cursor: pointer;
       padding: 5px 10px;
-      background-color: #85A0A9; /* #3498db; */
+      background-color: #1B789D;
       color: #f4f4f4;
       border: none;
       border-radius: 5px;
@@ -424,7 +424,8 @@ body {
     }
     
     button.cancel {
-      background-color: #e74c3c; 
+      background-color: #a3a3a3; 
+      color: #403B3E;
     }
 
     button.cancel:hover {
@@ -476,7 +477,7 @@ body {
     }
 
     button[type="submit"] {
-      background-color: #85A0A9;
+      background-color: #1B789D;
       color: #f4f4f4;
       border: none;
       padding: 10px;
@@ -486,7 +487,7 @@ body {
     }
 
     button[type="submit"]:hover {
-      background-color: #3498db;
+      background-color: #87CEEB;
     }
 
     textarea {
