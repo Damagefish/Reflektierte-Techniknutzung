@@ -63,9 +63,19 @@
         <label>Störfaktoren im Alltag:</label>
         <select v-model="selectedDisturbances" multiple> <!-- multiple --> 
           <option value="Handynutzung">Handynutzung</option>
-          <option value="Social Media">Social  Media</option>
-          <option value="YouTube">YouTube</option>
-          <option value="Arbeitsstress">Arbeitsstress</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Schlafmangel">Schlafmangel</option>
+          <option value="Einsamkeit">Einsamkeit</option>
+          <option value="Selbstzweifel">Selbstzweifel</option>
+          <option value="Körperliche oder emotionale Erschöpfung">Körperliche oder emotionale Erschöpfung</option>
+          <option value="Ungesunde Ernährung">Ungesunde Ernährung</option>
+          <option value="Zeitmangel für Freizeit oder Hobbys">Zeitmangel für Selbstpflege oder Hobbys</option>
+          <option value="Zeitdruck">Zeitdruck</option>
+          <option value="Sozialer Druck">Sozialer Druck</option>
+          <option value="Arbeitsüberlastung">Arbeitsüberlastung</option>
+          <option value="Gesundheitsprobleme">Gesundheitsprobleme</option>
+          <option value="Finanzielle Sorgen">Finanzielle Sorgen</option>
+          <option value="Konflikte in Beziehungen">Konflikte in Beziehungen</option>
           <option value="Familienprobleme">Familienprobleme</option>
           <!-- Weitere Optionen können hier hinzugefügt werden -->
         </select>
