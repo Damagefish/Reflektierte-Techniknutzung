@@ -67,7 +67,7 @@
       background-color: #87CEEB;
       color: #403b3e;
     }
-  @media (max-width: 500px){
+  @media (max-width: 619px){
     
     #arrowRight{
       position: absolute;
@@ -121,7 +121,7 @@
     }
   }
   
-  @media(min-width: 501px){
+  @media(min-width: 620px){
 
   h2{
       background-color: #f4f4f4;
