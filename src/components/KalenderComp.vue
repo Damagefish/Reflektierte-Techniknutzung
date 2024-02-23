@@ -902,6 +902,10 @@ getActiveDay(date) {
   section{
     margin: 20px;
   }
+  
+  h4{
+      color: #f4f4f4;
+    }
   @media only screen and (max-width: 600px) {
   
 
